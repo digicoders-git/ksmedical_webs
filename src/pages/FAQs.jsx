@@ -1,0 +1,103 @@
+import React, { useState, useEffect } from 'react';
+import { Plus, Minus, Search, HelpCircle, MessageCircle } from 'lucide-react';
+
+const FAQs = () => {
+    const [openIndex, setOpenIndex] = useState(0);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
+    const faqs = [
+        {
+            question: "How do I order prescription medicine?",
+            answer: "Simply upload a photo of your valid prescription through our secure portal or app. Our licensed pharmacists will verify the details, and once approved, you can complete the purchase and choose your delivery time."
+        },
+        {
+            question: "Is delivery available everywhere?",
+            answer: "We currently offer same-day and next-day delivery in major metropolitan areas. For other locations, standard shipping typically takes 3-5 business days. You can check your postcode at checkout for specific availability."
+        },
+        {
+            question: "Are your medicines authentic and safe?",
+            answer: "Yes, 100%. We source all our medicines and health products directly from certified manufacturers and authorized distributors. Every product undergoes strict quality control checks before being dispatched."
+        },
+        {
+            question: "Can I cancel my order or get a refund?",
+            answer: "Orders can be cancelled before they are dispatched for a full refund. Due to health and safety regulations, we cannot accept returns for prescription medication once delivered, but we offer returns for supplements and non-medicinal products within 30 days."
+        },
+        {
+            question: "Do you accept insurance plans?",
+            answer: "We are currently integrating with major insurance providers. At this moment, you can pay upfront and download a tax-ready invoice from your account dashboard to claim reimbursement from your insurer."
+        }
+    ];
+
+    return (
+        <div className="bg-[#fcfdfc] pt-[120px] lg:pt-[200px] pb-48 font-sans">
+            <div className="container mx-auto px-6 lg:px-20 max-w-5xl">
+                {/* Header section */}
+                <div className="text-center mb-24">
+                    <div className="inline-flex items-center gap-3 bg-primary/10 text-primary px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-8">
+                        <HelpCircle className="w-4 h-4" /> Help Center
+                    </div>
+                    <h1 className="text-5xl md:text-6xl font-extrabold text-[#06331A] mb-8 tracking-tight">
+                        Frequently Asked <span className="text-secondary">Questions</span>
+                    </h1>
+                    <p className="text-gray-400 text-lg font-light leading-relaxed max-w-2xl mx-auto">
+                        Need help? Find answers to the most common questions about our services, orders, and health policies.
+                    </p>
+                </div>
+
+                {/* Search in FAQ (Visual only) */}
+                <div className="relative mb-20 max-w-2xl mx-auto">
+                    <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+                    <input 
+                        type="text" 
+                        placeholder="Type your question..." 
+                        className="w-full bg-white border border-gray-100 py-6 pl-16 pr-8 rounded-[30px] shadow-2xl shadow-gray-200/50 focus:outline-none focus:ring-4 focus:ring-primary/5 transition-all text-sm"
+                    />
+                </div>
+
+                {/* FAQ List */}
+                <div className="space-y-6">
+                    {faqs.map((faq, idx) => (
+                        <div 
+                            key={idx} 
+                            className={`group border-2 transition-all duration-300 rounded-[35px] overflow-hidden ${openIndex === idx ? 'border-primary bg-white shadow-2xl shadow-primary/5' : 'border-gray-50 bg-white hover:border-gray-200'}`}
+                        >
+                            <button 
+                                onClick={() => setOpenIndex(openIndex === idx ? -1 : idx)}
+                                className="w-full px-8 md:px-12 py-8 flex items-center justify-between text-left"
+                            >
+                                <span className={`text-xl md:text-2xl font-bold transition-colors ${openIndex === idx ? 'text-primary' : 'text-[#06331A]'}`}>
+                                    {faq.question}
+                                </span>
+                                <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 transition-all ${openIndex === idx ? 'bg-primary text-white rotate-180' : 'bg-gray-100 text-gray-400 group-hover:bg-gray-200'}`}>
+                                    {openIndex === idx ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
+                                </div>
+                            </button>
+                            
+                            <div className={`px-8 md:px-12 transition-all duration-500 ease-in-out ${openIndex === idx ? 'max-h-[500px] pb-10 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+                                <p className="text-gray-500 text-lg leading-relaxed font-light border-t border-gray-50 pt-8">
+                                    {faq.answer}
+                                </p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Still have questions? */}
+                <div className="mt-32 bg-secondary/10 rounded-[50px] p-12 md:p-20 flex flex-col md:flex-row items-center justify-between gap-10">
+                    <div className="max-w-md">
+                        <h2 className="text-3xl font-extrabold text-[#06331A] mb-4">Still have questions?</h2>
+                        <p className="text-gray-500 font-light">Can't find the answer you're looking for? Please chat to our friendly team.</p>
+                    </div>
+                    <button className="bg-[#06331A] text-white px-10 py-5 rounded-2xl font-bold flex items-center gap-3 hover:scale-105 transition-all shadow-xl shadow-primary/20">
+                        <MessageCircle className="w-5 h-5" /> Contact Support
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default FAQs;
