@@ -36,7 +36,7 @@ const Header = () => {
         <React.Fragment> 
         <header className={`fixed top-0 left-0 w-full z-50 bg-white transition-all duration-300 ${scrolled ? 'shadow-lg' : 'shadow-md'}`}>
             {/* Top Bar - Slim & Premium */}
-            <div className={`bg-primary text-white text-[11px] hidden md:block tracking-wide transition-all duration-300 overflow-hidden ${scrolled ? 'max-h-0 py-0' : 'max-h-12 py-1.5'}`}>
+            {/* <div className={`bg-primary text-white text-[11px] hidden md:block tracking-wide transition-all duration-300 overflow-hidden ${scrolled ? 'max-h-0 py-0' : 'max-h-12 py-1.5'}`}>
                 <div className="container mx-auto px-4 lg:px-8 flex justify-between items-center">
                     <div className="flex items-center space-x-4">
                         <span className="flex items-center gap-1 opacity-90 hover:opacity-100 cursor-pointer">
@@ -52,107 +52,60 @@ const Header = () => {
                         <a href="#" className="hover:text-white hover:underline transition-all">Track Order</a>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             {/* Main Header Content */}
-            <div className={`container mx-auto px-4 lg:px-8 flex justify-between items-center gap-8 transition-all duration-300 overflow-hidden ${scrolled ? 'max-h-0 py-0 opacity-0' : 'max-h-24 py-3 lg:py-4 opacity-100'}`}>
+            <div className="container mx-auto px-4 lg:px-8 flex items-center h-20 transition-all duration-300">
                 
-                {/* Logo Section */}
-                <Link to="/" className="flex-shrink-0">
-                    <img 
-                        src="/KS2-Logo.png" 
-                        alt="KS4 PharmaNet" 
-                        className="h-10 md:h-12 w-auto object-contain" 
-                    />
-                </Link>
-
-                {/* Search Bar - Removed as requested */}
-                <div className="hidden lg:flex flex-1 max-w-xl"></div>
-
-                {/* Right Actions - Minimal */}
-                <div className="flex items-center gap-6">
-                    {/* Account */}
-                    <Link to="/login" className="hidden sm:flex items-center gap-2 group">
-                        <div className="p-2 bg-gray-50 rounded-full group-hover:bg-primary/10 transition-colors">
-                            <User className="w-5 h-5 text-gray-600 group-hover:text-primary transition-colors" />
-                        </div>
-                        <div className="flex flex-col">
-                            <span className="text-[10px] text-gray-500 font-medium leading-tight">Welcome</span>
-                            <span className="text-xs font-bold text-gray-800 group-hover:text-primary transition-colors">Sign In / Register</span>
-                        </div>
+                {/* Logo Section - Left aligned */}
+                <div className="flex-shrink-0">
+                    <Link to="/">
+                        <img 
+                            src="/KS2-Logo.png" 
+                            alt="KS4 PharmaNet" 
+                            className="h-12 md:h-14 w-auto object-contain" 
+                        />
                     </Link>
+                </div>
 
-                    {/* Mobile Menu Toggle */}
+                {/* Navigation Bar - Centered */}
+                <nav className="hidden lg:flex flex-1 justify-center items-center gap-12">
+                    {[
+                        { name: 'Blog', path: '/blog' },
+                        { name: 'About Us', path: '/about-us' },
+                        { name: 'Privacy Policy', path: '/privacy-policy' },
+                        { name: 'Contact Us', path: '/contact-us' },
+                    ].map((item) => {
+                        const isActive = location.pathname === item.path;
+                        return (
+                            <Link 
+                                key={item.name} 
+                                to={item.path} 
+                                className={`text-base font-semibold transition-all relative group py-2 ${
+                                    isActive ? 'text-primary' : 'text-gray-600 hover:text-primary'
+                                }`}
+                            >
+                                {item.name}
+                                <span className={`absolute bottom-0 left-0 h-[2px] bg-primary transition-all duration-300 ${
+                                    isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                                }}`}></span>
+                            </Link>
+                        );
+                    })}
+                </nav>
+
+                {/* Mobile Menu Toggle / Spacer for desktop to keep center true */}
+                <div className="flex items-center lg:hidden">
                     <button 
-                        className="lg:hidden text-gray-700 hover:text-primary transition-colors p-1"
+                        className="text-gray-700 hover:text-primary transition-colors p-1"
                         onClick={toggleMenu}
                     >
-                        <Menu className="w-7 h-7" />
+                        {isMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
                     </button>
                 </div>
-            </div>
 
-            {/* Navigation Bar - Clean & distinct */}
-            <div className="hidden lg:block border-t border-gray-100 bg-white">
-                <div className="container mx-auto px-4 lg:px-8">
-                    <nav className="flex items-center gap-8">
-                        {/* Categories Dropdown Trigger */}
-                        <div className="relative group py-3 cursor-pointer">
-                            <div className="flex items-center gap-2 bg-primary/5 px-4 py-2 rounded text-primary font-bold text-sm uppercase tracking-wider hover:bg-primary hover:text-white transition-all duration-300">
-                                <Menu className="w-4 h-4" />
-                                All Categories
-                                <ChevronDown className="w-3 h-3 ml-1" />
-                            </div>
-                             {/* Mega Menu Dropdown */}
-                            <div className="absolute top-full left-0 w-64 bg-white shadow-xl rounded-b-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
-                                {[
-                                    { name: 'Medicines', id: 'medicines' },
-                                    { name: 'Medical Equipment', id: 'medical-equipment' },
-                                    { name: 'Supplements', id: 'supplements' },
-                                    { name: 'Personal Care', id: 'personal-care' },
-                                    { name: 'Ayurveda', id: 'ayurveda' },
-                                    { name: 'Baby Care', id: 'baby-care' }
-                                ].map((item) => (
-                                    <Link key={item.id} to={`/category/${item.id}`} className="flex items-center justify-between px-4 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-primary border-b border-gray-50 last:border-0 transition-colors group/item">
-                                        {item.name}
-                                        <ChevronRight className="w-3 h-3 opacity-0 group-hover/item:opacity-100 transition-opacity" />
-                                    </Link>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* Regular Links via Array */}
-                        {[
-                            { name: 'Our Team', path: '/team' },
-                            { name: 'Blog', path: '/blog' },
-                            { name: 'About Us', path: '/about-us' },
-                            { name: 'Privacy Policy', path: '/privacy-policy' },
-                            { name: 'Contact Us', path: '/contact-us' },
-                        ].map((item) => {
-                            const isActive = location.pathname === item.path;
-                            return (
-                                <Link 
-                                    key={item.name} 
-                                    to={item.path} 
-                                    className={`text-sm font-semibold transition-colors relative group py-4 ${
-                                        isActive ? 'text-primary' : 'text-gray-600 hover:text-primary'
-                                    }`}
-                                >
-                                    {item.name}
-                                    <span className={`absolute bottom-0 left-0 h-[2px] bg-primary transition-all duration-300 ${
-                                        isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                                    }`}></span>
-                                </Link>
-                            );
-                        })}
-
-                        <div className="ml-auto flex items-center space-x-6">
-                            <Link to="/offers" className="text-xs font-bold text-secondary uppercase tracking-wider border border-secondary/20 px-3 py-1.5 rounded hover:bg-secondary hover:text-white transition-all">
-                                Special Offers
-                            </Link>
-                        </div>
-                    </nav>
-                </div>
+                {/* Desktop Spacer to maintain perfect center of nav */}
+                <div className="hidden lg:block w-[180px]"></div> 
             </div>
 
             {/* Mobile Menu Drawer (Left Slide) */}

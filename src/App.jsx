@@ -23,7 +23,7 @@ const AppContent = () => {
     <div className="min-h-screen bg-white font-sans flex flex-col">
       <Header />
       
-      <div className="flex-grow">
+      <div className="flex-grow pt-20">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/category/:categoryId" element={<CategoryProducts />} />
