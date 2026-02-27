@@ -91,7 +91,7 @@ const PrivacyPolicy = () => {
                                 </div>
                                 <h4 className="text-[10px] font-extrabold text-primary uppercase tracking-[0.2em] mb-2">{section.subtitle}</h4>
                                 <h3 className="text-xl font-bold text-gray-900 mb-4">{section.title}</h3>
-                                <p className="text-gray-500 text-sm leading-relaxed font-light">
+                                <p className="text-gray-600 text-sm leading-relaxed font-semibold">
                                     {section.content}
                                 </p>
                             </div>
@@ -103,7 +103,7 @@ const PrivacyPolicy = () => {
                         <div className="space-y-8">
                             <div>
                                 <h2 className="text-3xl font-bold text-gray-900 mb-6">How your data flows</h2>
-                                <p className="text-gray-500 leading-relaxed">
+                                <p className="text-gray-600 leading-relaxed font-semibold">
                                     Transparency is at the heart of our operations. We want you to know exactly how your information is used to improve your healthcare experience.
                                 </p>
                             </div>
@@ -116,7 +116,7 @@ const PrivacyPolicy = () => {
                                 ].map((step, i) => (
                                     <div key={i} className="flex items-center gap-4 bg-gray-50 p-4 rounded-2xl border border-gray-100 group cursor-default">
                                         <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-xs font-bold text-primary shadow-sm group-hover:bg-primary group-hover:text-white transition-colors">0{i+1}</div>
-                                        <span className="text-sm text-gray-600 font-medium">{step}</span>
+                                        <span className="text-sm text-gray-700 font-bold">{step}</span>
                                     </div>
                                 ))}
                             </div>
@@ -124,7 +124,7 @@ const PrivacyPolicy = () => {
                         <div className="bg-primary/5 p-12 rounded-[50px] border border-primary/10 relative overflow-hidden">
                             <AlertCircle className="absolute -top-10 -right-10 w-48 h-48 text-primary/5" />
                             <h3 className="text-2xl font-bold text-gray-900 mb-6 relative z-10">Important Notice</h3>
-                            <p className="text-gray-600 text-sm leading-loose mb-8 relative z-10">
+                            <p className="text-gray-700 text-sm leading-loose mb-8 relative z-10 font-semibold">
                                 This policy is subject to change as we integrate newer security technologies. We will notify all registered users via email 30 days before any major update.
                             </p>
                             <button className="flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all group relative z-10">
@@ -133,10 +133,14 @@ const PrivacyPolicy = () => {
                         </div>
                     </div>
 
-                        {/* Footer Contact - Simple & Clean */}
-                        <div className="text-center bg-white border border-gray-100 p-12 rounded-[40px] shadow-sm">
-                            <p className="text-gray-400 text-sm mb-4">Privacy questions? Reach out to our Data Officer</p>
-                            <a href="mailto:privacy@pharmanet.com" className="text-2xl font-bold text-gray-900 hover:text-primary transition-colors underline decoration-secondary decoration-4 underline-offset-8">
+                        {/* Footer Contact - Modern & Bold */}
+                        <div className="text-center bg-gradient-to-br from-primary/5 to-secondary/5 border-2 border-primary/20 p-12 rounded-[40px] shadow-xl">
+                            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
+                                <Shield className="w-3.5 h-3.5" />
+                                Need Help?
+                            </div>
+                            <p className="text-gray-700 text-base mb-6 font-bold">Privacy questions? Reach out to our Data Officer</p>
+                            <a href="mailto:privacy@pharmanet.com" className="text-3xl font-extrabold text-primary hover:text-secondary transition-colors underline decoration-secondary decoration-4 underline-offset-8">
                                 privacy@pharmanet.com
                             </a>
                         </div>

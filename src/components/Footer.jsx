@@ -1,5 +1,5 @@
 import React from "react";
-import { Twitter, Instagram, Facebook, MapPin, Phone, Linkedin, Youtube } from "lucide-react";
+import { MapPin, Phone, Mail, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -89,7 +89,7 @@ const Footer = () => {
       </div>
 
       <div className="container mx-auto px-6 lg:px-20 max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-16 border-b border-white/10 pb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 border-b border-white/10 pb-16">
           {/* Branding & Mission */}
           <div className="lg:col-span-2">
             <div className="mb-8 rounded-lg w-[150px] bg-transparent">
@@ -110,14 +110,16 @@ const Footer = () => {
               <div className="flex items-start gap-4 text-white/70 group">
                 <MapPin className="w-5 h-5 text-[#EA580C] shrink-0" />
                 <span className="font-light text-sm">
-                  2118 Thornridge Cir. Syracuse,
-                  <br />
-                  Connecticut 35624
+                  2118 Thornridge Cir. Syracuse, CT 35624
                 </span>
               </div>
               <div className="flex items-center gap-4 text-white/70 group">
                 <Phone className="w-5 h-5 text-[#EA580C] shrink-0" />
-                <span className="font-light text-sm">(225) 555-0118</span>
+                <span className="font-light text-sm">+91 98765 43210</span>
+              </div>
+              <div className="flex items-center gap-4 text-white/70 group">
+                <Mail className="w-5 h-5 text-[#EA580C] shrink-0" />
+                <span className="font-light text-sm">care@pharmanet.com</span>
               </div>
             </div>
           </div>
@@ -133,74 +135,45 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Contact Info */}
           <div>
-            <h4 className="text-xl font-bold mb-8">Services</h4>
-            <ul className="space-y-4 text-white/70 font-light">
-              <li><Link to="#" className="hover:text-white transition-colors">Online Pharmacy</Link></li>
-              <li><Link to="#" className="hover:text-white transition-colors">Health Checkup</Link></li>
-              <li><Link to="#" className="hover:text-white transition-colors">Lab Tests</Link></li>
-              <li><Link to="#" className="hover:text-white transition-colors">Consultation</Link></li>
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h4 className="text-xl font-bold mb-8">Legal</h4>
-            <ul className="space-y-4 text-white/70 font-light">
+            <h4 className="text-xl font-bold mb-8">Contact Info</h4>
+            <ul className="space-y-4 text-white/70 font-light mb-8">
               <li><Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
               <li><Link to="/contact-us" className="hover:text-white transition-colors">Contact Us</Link></li>
-              <li><Link to="#" className="hover:text-white transition-colors">Terms & Conditions</Link></li>
-              <li><Link to="#" className="hover:text-white transition-colors">Return Policy</Link></li>
             </ul>
-          </div>
-
-          {/* Follow Us - New Column */}
-          <div>
-            <h4 className="text-xl font-bold mb-8">Follow Us</h4>
-            <p className="text-white/70 text-sm font-light mb-6 leading-relaxed">
-              Stay connected with us on social media for health tips, updates & exclusive offers!
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white/10 hover:bg-[#1DA1F2] text-white p-3 rounded-lg transition-all hover:scale-110"
+            <div className="flex flex-wrap gap-4">
+              <a 
+                href="tel:+919876543210" 
+                className="bg-white/10 hover:bg-[#EA580C] text-white p-3 rounded-lg transition-all hover:scale-110"
+                title="Call Us"
               >
-                <Twitter className="w-5 h-5" />
+                <Phone className="w-5 h-5" />
               </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white/10 hover:bg-[#E4405F] text-white p-3 rounded-lg transition-all hover:scale-110"
+              <a 
+                href="https://wa.me/919876543210" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="bg-white/10 hover:bg-[#25D366] text-white p-3 rounded-lg transition-all hover:scale-110"
+                title="WhatsApp"
               >
-                <Instagram className="w-5 h-5" />
+                <MessageCircle className="w-5 h-5" />
               </a>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white/10 hover:bg-[#1877F2] text-white p-3 rounded-lg transition-all hover:scale-110"
+              <a 
+                href="mailto:care@pharmanet.com" 
+                className="bg-white/10 hover:bg-[#EA580C] text-white p-3 rounded-lg transition-all hover:scale-110"
+                title="Email"
               >
-                <Facebook className="w-5 h-5" />
+                <Mail className="w-5 h-5" />
               </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white/10 hover:bg-[#0A66C2] text-white p-3 rounded-lg transition-all hover:scale-110"
+              <a 
+                href="https://maps.google.com/?q=2118+Thornridge+Cir+Syracuse+CT+35624" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="bg-white/10 hover:bg-[#EA580C] text-white p-3 rounded-lg transition-all hover:scale-110"
+                title="Location"
               >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white/10 hover:bg-[#FF0000] text-white p-3 rounded-lg transition-all hover:scale-110"
-              >
-                <Youtube className="w-5 h-5" />
+                <MapPin className="w-5 h-5" />
               </a>
             </div>
           </div>

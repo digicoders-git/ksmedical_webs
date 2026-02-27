@@ -76,7 +76,6 @@ const Header = () => {
                         { name: 'About Us', path: '/about-us' },
                         { name: 'FAQs', path: '/faqs' },
                         { name: 'Privacy Policy', path: '/privacy-policy' },
-                        { name: 'Contact Us', path: '/contact-us' },
                     ].map((item) => {
                         const isActive = location.pathname === item.path;
                         return (
@@ -96,6 +95,16 @@ const Header = () => {
                     })}
                 </nav>
 
+                {/* Contact Us Button - Right Side */}
+                <div className="hidden lg:flex items-center ml-auto">
+                    <Link 
+                        to="/contact-us"
+                        className="bg-primary hover:bg-primary/90 text-white font-bold px-6 py-2.5 rounded-lg transition-all hover:scale-105 shadow-md"
+                    >
+                        Contact Us
+                    </Link>
+                </div>
+
                 {/* Mobile Menu Toggle */}
                 <div className="flex items-center lg:hidden ml-auto">
                     <button 
@@ -104,10 +113,7 @@ const Header = () => {
                     >
                         {isMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
                     </button>
-                </div>
-
-                {/* Desktop Spacer to maintain perfect center of nav */}
-                <div className="hidden lg:block w-[180px]"></div> 
+                </div> 
             </div>
 
             {/* Mobile Menu Drawer (Left Slide) */}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const FeaturedSection = () => {
     return (
@@ -23,8 +24,8 @@ const FeaturedSection = () => {
                     <div className="relative group md:mt-0 flex flex-col h-full justify-start">
                          <div className="aspect-square w-full rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                              <img 
-                                src="https://images.unsplash.com/photo-1584017911766-d451b3d0e843?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                alt="Supplements" 
+                                src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=800&q=80" 
+                                alt="Medicine Bottles" 
                                 className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                              />
                          </div>
@@ -33,15 +34,15 @@ const FeaturedSection = () => {
                     {/* Center Column: Button + Image 2 (Dropped Lower) */}
                     <div className="flex flex-col items-center relative">
                          {/* Button floats above the image */}
-                         <button className="mb-12 px-10 py-4 bg-white border-2 border-secondary text-secondary font-bold text-lg rounded-[20px] hover:bg-secondary hover:text-white transition-all duration-300 uppercase tracking-widest shadow-[0_10px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_15px_30px_rgba(216,27,31,0.2)] transform hover:-translate-y-1">
+                         <Link to="/contact-us" className="mb-12 px-10 py-4 bg-white border-2 border-secondary text-secondary font-bold text-lg rounded-[20px] hover:bg-secondary hover:text-white transition-all duration-300 uppercase tracking-widest shadow-[0_10px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_15px_30px_rgba(216,27,31,0.2)] transform hover:-translate-y-1">
                             Discover More
-                        </button>
+                        </Link>
 
                          {/* Center Image - Pushed down and different shape */}
                          <div className="w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 group relative">
                             <img 
-                                src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                alt="Lifestyle" 
+                                src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?auto=format&fit=crop&w=800&q=80" 
+                                alt="Pharmacy Medicine" 
                                 className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                             />
                             {/* Subtle overlay */}
@@ -53,8 +54,8 @@ const FeaturedSection = () => {
                     <div className="relative group md:mt-0 flex flex-col h-full justify-start">
                          <div className="aspect-square w-full rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                              <img 
-                                src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                alt="Essential Oils" 
+                                src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80" 
+                                alt="Medical Pills" 
                                 className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                              />
                          </div>
