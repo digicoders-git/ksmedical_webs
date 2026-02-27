@@ -32,21 +32,47 @@ const FAQs = () => {
     ];
 
     return (
-        <div className="bg-[#fcfdfc] pt-[120px] lg:pt-[200px] pb-48 font-sans">
-            <div className="container mx-auto px-6 lg:px-20 max-w-5xl">
-                {/* Header section */}
-                <div className="text-center mb-24">
-                    <div className="inline-flex items-center gap-3 bg-primary/10 text-primary px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-8">
-                        <HelpCircle className="w-4 h-4" /> Help Center
+        <div className="bg-white font-sans">
+            {/* Hero Section - Full Width Background */}
+            <div className="bg-[rgb(6,51,26)] pt-[120px] lg:pt-[140px] pb-16">
+                <div className="container mx-auto px-6 lg:px-20 max-w-7xl">
+                    <div className="text-center relative">
+                        {/* Decorative elements */}
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-white/5 rounded-full blur-3xl -z-10"></div>
+                        <div className="absolute top-20 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -z-10"></div>
+                        <div className="absolute top-40 left-0 w-24 h-24 bg-white/5 rounded-full blur-xl -z-10"></div>
+                        
+                        <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm text-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest mb-8 shadow-lg animate-pulse">
+                            <HelpCircle className="w-5 h-5" /> Help Center
+                        </div>
+                        <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-8 tracking-tight leading-tight">
+                            Frequently Asked <br/><span className="text-secondary">Questions</span>
+                        </h1>
+                        <p className="text-white/90 text-xl font-semibold leading-relaxed max-w-2xl mx-auto">
+                            Need help? Find answers to the most common questions about our services, orders, and health policies.
+                        </p>
+                        
+                        {/* Stats or icons */}
+                        <div className="flex justify-center gap-8 mt-12">
+                            <div className="text-center">
+                                <div className="text-3xl font-bold text-white">500+</div>
+                                <div className="text-sm text-white/70">Questions Answered</div>
+                            </div>
+                            <div className="text-center">
+                                <div className="text-3xl font-bold text-white">24/7</div>
+                                <div className="text-sm text-white/70">Support Available</div>
+                            </div>
+                            <div className="text-center">
+                                <div className="text-3xl font-bold text-white">10K+</div>
+                                <div className="text-sm text-white/70">Happy Customers</div>
+                            </div>
+                        </div>
                     </div>
-                    <h1 className="text-5xl md:text-6xl font-extrabold text-[#06331A] mb-8 tracking-tight">
-                        Frequently Asked <span className="text-secondary">Questions</span>
-                    </h1>
-                    <p className="text-gray-400 text-lg font-light leading-relaxed max-w-2xl mx-auto">
-                        Need help? Find answers to the most common questions about our services, orders, and health policies.
-                    </p>
                 </div>
+            </div>
 
+            {/* Content Section */}
+            <div className="container mx-auto px-6 lg:px-20 max-w-7xl py-20 pb-48">
                 {/* Search in FAQ (Visual only) */}
                 <div className="relative mb-20 max-w-2xl mx-auto">
                     <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />

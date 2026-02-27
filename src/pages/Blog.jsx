@@ -34,29 +34,35 @@ const Blog = () => {
     ];
 
     return (
-        <div className="bg-[#fcfdfc] pt-[120px] lg:pt-[200px] pb-48 font-sans">
-            <div className="container mx-auto px-6 lg:px-20 max-w-7xl">
-                {/* Header section */}
-                <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-20">
-                    <div className="max-w-2xl">
-                        <h1 className="text-5xl md:text-6xl font-extrabold text-[#06331A] mb-8 tracking-tight">
-                            PharmaNet <span className="text-secondary">Journal</span>
-                        </h1>
-                        <p className="text-gray-500 text-lg font-light leading-relaxed">
-                            Stay updated with the latest in healthcare, wellness tips, and medical innovations from our team of experts.
-                        </p>
-                    </div>
-                    
-                    {/* Search Bar */}
-                    <div className="relative w-full lg:w-96">
-                        <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
-                        <input 
-                            type="text" 
-                            placeholder="Search articles..." 
-                            className="w-full bg-white border border-gray-100 py-5 pl-16 pr-8 rounded-2xl shadow-xl shadow-gray-200/50 focus:outline-none focus:ring-4 focus:ring-primary/5 transition-all text-sm"
-                        />
+        <div className="bg-white font-sans">
+            {/* Hero Section - Full Width Background */}
+            <div className="bg-[rgb(6,51,26)] pt-[120px] lg:pt-[140px] pb-16">
+                <div className="container mx-auto px-6 lg:px-20 max-w-7xl">
+                    <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+                        <div className="max-w-2xl">
+                            <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-6 tracking-tight">
+                                PharmaNet <span className="text-secondary">Journal</span>
+                            </h1>
+                            <p className="text-white/90 text-lg font-semibold leading-relaxed">
+                                Stay updated with the latest in healthcare, wellness tips, and medical innovations from our team of experts.
+                            </p>
+                        </div>
+                        
+                        {/* Search Bar */}
+                        <div className="relative w-full lg:w-96">
+                            <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+                            <input 
+                                type="text" 
+                                placeholder="Search articles..." 
+                                className="w-full bg-white border-2 border-white/20 text-gray-900 placeholder:text-gray-500 py-5 pl-16 pr-8 rounded-2xl focus:outline-none focus:border-white transition-all text-sm shadow-lg"
+                            />
+                        </div>
                     </div>
                 </div>
+            </div>
+
+            {/* Content Section */}
+            <div className="container mx-auto px-6 lg:px-20 max-w-7xl py-20 pb-48">
 
                 {/* Featured Categories */}
                 <div className="flex flex-wrap gap-3 mb-16">

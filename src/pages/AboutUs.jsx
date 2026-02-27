@@ -7,14 +7,21 @@ const AboutUs = () => {
   }, []);
 
   return (
-    <div className="bg-white pt-[120px] lg:pt-[200px] pb-48">
-      {/* Hero Section */}
-      <div className="container mx-auto px-6 lg:px-12 mb-20 text-center">
-        <h1 className="text-4xl md:text-6xl font-extrabold text-[#06331A] mb-6">About <span className="text-[#EA580C]">PharmaNet</span></h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          We are committed to providing you with the best pharmaceutical care and wellness products, ensuring your health is always our top priority.
-        </p>
+    <div className="bg-white font-sans">
+      {/* Hero Section - Full Width Background */}
+      <div className="bg-[rgb(6,51,26)] pt-[120px] lg:pt-[140px] pb-16">
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6">About <span className="text-secondary">PharmaNet</span></h1>
+            <p className="text-lg text-white/90 max-w-2xl mx-auto leading-relaxed font-semibold">
+              We are committed to providing you with the best pharmaceutical care and wellness products, ensuring your health is always our top priority.
+            </p>
+          </div>
+        </div>
       </div>
+
+      {/* Content Section */}
+      <div className="pb-48">
 
       {/* Mission & Vision */}
       <div className="bg-gray-50 py-20 mb-24">
@@ -97,6 +104,7 @@ const AboutUs = () => {
             </div>
           ))}
         </div>
+      </div>
       </div>
     </div>
   );

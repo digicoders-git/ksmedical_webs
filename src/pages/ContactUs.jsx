@@ -7,18 +7,22 @@ const ContactUs = () => {
   }, []);
 
   return (
-    <div className="bg-gray-50 pt-[120px] lg:pt-[200px] pb-48">
-      {/* Header */}
-      <div className="container mx-auto px-6 lg:px-12 mb-16">
-        <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-extrabold text-[#06331A] mb-6">Get in Touch</h1>
-            <p className="text-lg text-gray-600 leading-relaxed font-light">
-                Have questions about your prescription or need health advice? Our licensed pharmaceutical experts are here to help you 24/7.
-            </p>
+    <div className="bg-white font-sans">
+      {/* Hero Section - Full Width Background */}
+      <div className="bg-[rgb(6,51,26)] pt-[120px] lg:pt-[140px] pb-16">
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="max-w-3xl">
+              <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6">Get in Touch</h1>
+              <p className="text-lg text-white/90 leading-relaxed font-semibold">
+                  Have questions about your prescription or need health advice? Our licensed pharmaceutical experts are here to help you 24/7.
+              </p>
+          </div>
         </div>
       </div>
 
-      <div className="container mx-auto px-6 lg:px-12">
+      {/* Content Section */}
+      <div className="bg-gray-50 py-20 pb-48">
+        <div className="container mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           
           {/* Contact Info Cards */}
@@ -123,6 +127,7 @@ const ContactUs = () => {
             </div>
           </div>
 
+        </div>
         </div>
       </div>
     </div>

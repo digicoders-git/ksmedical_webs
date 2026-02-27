@@ -68,11 +68,13 @@ const Header = () => {
                     </Link>
                 </div>
 
-                {/* Navigation Bar - Centered */}
+                {/* Navigation Bar - Desktop Only */}
                 <nav className="hidden lg:flex flex-1 justify-center items-center gap-12">
                     {[
+                        { name: 'Home', path: '/' },
                         { name: 'Blog', path: '/blog' },
                         { name: 'About Us', path: '/about-us' },
+                        { name: 'FAQs', path: '/faqs' },
                         { name: 'Privacy Policy', path: '/privacy-policy' },
                         { name: 'Contact Us', path: '/contact-us' },
                     ].map((item) => {
@@ -94,8 +96,8 @@ const Header = () => {
                     })}
                 </nav>
 
-                {/* Mobile Menu Toggle / Spacer for desktop to keep center true */}
-                <div className="flex items-center lg:hidden">
+                {/* Mobile Menu Toggle */}
+                <div className="flex items-center lg:hidden ml-auto">
                     <button 
                         className="text-gray-700 hover:text-primary transition-colors p-1"
                         onClick={toggleMenu}
@@ -123,64 +125,24 @@ const Header = () => {
                     className={`absolute left-0 top-0 h-full w-[85%] max-w-[300px] bg-white shadow-2xl flex flex-col transform transition-transform duration-300 ease-out ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
                 >
                     {/* Header */}
-                    <Link 
-                        to="/login" 
-                        className="bg-primary p-5 flex justify-between items-center text-white"
-                        onClick={() => setIsMenuOpen(false)}
-                    >
-                        <div className="flex items-center gap-3">
-                             <div className="p-2 bg-white/20 rounded-full">
-                                <User className="w-5 h-5 text-white" />
-                             </div>
-                             <div>
-                                <p className="text-xs opacity-80">Welcome Guest</p>
-                                <p className="font-bold text-sm">Login / Register</p>
-                             </div>
-                        </div>
-                        <button onClick={(e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            setIsMenuOpen(false);
-                        }}>
-                            <X className="w-6 h-6 opacity-80 hover:opacity-100" />
+                    <div className="bg-white p-5 flex justify-between items-center border-b border-gray-200">
+                        <img src="/KS2-Logo.png" alt="KS4 PharmaNet" className="h-10 w-auto object-contain" />
+                        <button onClick={() => setIsMenuOpen(false)}>
+                            <X className="w-6 h-6 text-gray-700 hover:text-primary" />
                         </button>
-                    </Link>
+                    </div>
                     
                     {/* Menu Items */}
                     <div className="flex-1 overflow-y-auto py-2">
                         <div className="px-4 py-2">
-                            <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Shop By Category</p>
-                            {[
-                                { name: 'Medicines', id: 'medicines' },
-                                { name: 'Medical Equipment', id: 'medical-equipment' },
-                                { name: 'Supplements', id: 'supplements' },
-                                { name: 'Personal Care', id: 'personal-care' },
-                                { name: 'Ayurveda', id: 'ayurveda' },
-                                { name: 'Baby Care', id: 'baby-care' }
-                            ].map((item) => (
-                                <Link 
-                                    key={item.id} 
-                                    to={`/category/${item.id}`} 
-                                    className="flex items-center justify-between py-3 text-gray-700 border-b border-gray-50 last:border-0 hover:text-primary transition-colors"
-                                    onClick={() => setIsMenuOpen(false)}
-                                >
-                                    <span className="font-medium text-sm">{item.name}</span>
-                                    <ChevronRight className="w-4 h-4 text-gray-300" />
-                                </Link>
-                            ))}
-                        </div>
-
-                        <div className="h-2 bg-gray-50"></div>
-
-                        <div className="px-4 py-2">
-                            <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Company info</p>
+                            <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Navigation</p>
                              {[
-                                { name: 'Privacy Policy', path: '/privacy-policy' },
-                                { name: 'About Us', path: '/about-us' },
-                                { name: 'Our Team', path: '/team' },
+                                { name: 'Home', path: '/' },
                                 { name: 'Blog', path: '/blog' },
-                                { name: 'Contact Us', path: '/contact-us' },
+                                { name: 'About Us', path: '/about-us' },
                                 { name: 'FAQs', path: '/faqs' },
+                                { name: 'Privacy Policy', path: '/privacy-policy' },
+                                { name: 'Contact Us', path: '/contact-us' },
                              ].map((item) => {
                                 const isActive = location.pathname === item.path;
                                 return (
@@ -199,12 +161,7 @@ const Header = () => {
                         </div>
                     </div>
 
-                    {/* Footer CTA */}
-                    <div className="p-4 border-t border-gray-100">
-                        <button className="w-full bg-secondary text-white font-bold py-3 rounded-lg shadow-lg hover:bg-secondary-dark transition-all">
-                            Need Help? Call Us
-                        </button>
-                    </div>
+                    {/* Footer CTA - Removed */}
                 </div>
             </div>
         </header>

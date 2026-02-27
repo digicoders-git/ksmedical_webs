@@ -42,54 +42,33 @@ const PrivacyPolicy = () => {
     ];
 
     return (
-        <div className="relative bg-[#fcfdfc] pt-[120px] lg:pt-[200px] pb-48 font-sans overflow-hidden">
-            {/* Dynamic Background Elements */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl -z-10 translate-x-1/2 -translate-y-1/2"></div>
-            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/5 rounded-full blur-3xl -z-10 -translate-x-1/2 translate-y-1/2"></div>
-
-            <div className="container mx-auto px-6 lg:px-12">
-                <div className="max-w-5xl mx-auto">
-                    
-                    {/* Hero Section - Extremely Modern */}
-                    <div className="relative mb-20">
-                        <div className="flex flex-col md:flex-row items-center gap-12 bg-white p-8 md:p-16 rounded-[40px] shadow-2xl shadow-primary/5 border border-gray-100 overflow-hidden">
-                            <div className="flex-1 space-y-6 relative z-10">
-                                <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
-                                    <Shield className="w-3.5 h-3.5" />
-                                    Security First
-                                </div>
-                                <h1 className="text-4xl md:text-6xl font-extrabold text-[#06331A] leading-[1.1]">
-                                    Your Health, <br/>
-                                    <span className="text-secondary">Your Privacy.</span>
-                                </h1>
-                                <p className="text-gray-500 text-lg font-light leading-relaxed max-w-md">
-                                    At PharmaNet, we protect your data as carefully as your health. Learn how we handle your digital footprint.
-                                </p>
-                                <div className="flex items-center gap-4 pt-4">
-                                    <div className="flex -space-x-3">
-                                        {[1,2,3].map(i => (
-                                            <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center overflow-hidden">
-                                                <img src={`https://i.pravatar.cc/100?img=${i+10}`} alt="user" />
-                                            </div>
-                                        ))}
-                                    </div>
-                                    <p className="text-sm text-gray-400 font-medium">Trusted by 50k+ Patients</p>
-                                </div>
-                            </div>
-                            <div className="flex-shrink-0 relative">
-                                <div className="w-64 h-64 md:w-80 md:h-80 bg-primary/5 rounded-[60px] rotate-12 absolute -z-10 group-hover:rotate-6 transition-transform"></div>
-                                <div className="bg-white p-8 rounded-[50px] shadow-xl border border-gray-100 relative z-20 overflow-hidden transform group-hover:-translate-y-2 transition-transform">
-                                    <FileText className="w-32 h-32 md:w-48 md:h-48 text-primary/20" />
-                                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                                        <Lock className="w-16 h-16 text-primary animate-pulse" />
-                                    </div>
-                                </div>
-                            </div>
+        <div className="relative bg-white font-sans overflow-hidden">
+            {/* Hero Section - Full Width Background */}
+            <div className="bg-[rgb(6,51,26)] pt-[120px] lg:pt-[140px] pb-16">
+                <div className="container mx-auto px-6 lg:px-12">
+                    <div className="max-w-5xl mx-auto text-center">
+                        <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
+                            <Shield className="w-3.5 h-3.5" />
+                            Security First
                         </div>
+                        <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-6">
+                            Your Health, <br/>
+                            <span className="text-secondary">Your Privacy.</span>
+                        </h1>
+                        <p className="text-white/90 text-lg font-semibold leading-relaxed max-w-2xl mx-auto">
+                            At PharmaNet, we protect your data as carefully as your health. Learn how we handle your digital footprint.
+                        </p>
                     </div>
+                </div>
+            </div>
 
-                    {/* Features/Stats Bar */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-24">
+            {/* Content Section */}
+            <div className="pb-48">
+                <div className="container mx-auto px-6 lg:px-12">
+                    <div className="max-w-5xl mx-auto">
+                        
+                        {/* Features/Stats Bar */}
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-24 mt-20">
                         {[
                             { label: 'GDPR Compliant', icon: <CheckCircle className="w-4 h-4" /> },
                             { label: 'SSL Secured', icon: <Lock className="w-4 h-4" /> },
@@ -154,14 +133,14 @@ const PrivacyPolicy = () => {
                         </div>
                     </div>
 
-                    {/* Footer Contact - Simple & Clean */}
-                    <div className="text-center bg-white border border-gray-100 p-12 rounded-[40px] shadow-sm">
-                        <p className="text-gray-400 text-sm mb-4">Privacy questions? Reach out to our Data Officer</p>
-                        <a href="mailto:privacy@pharmanet.com" className="text-2xl font-bold text-gray-900 hover:text-primary transition-colors underline decoration-secondary decoration-4 underline-offset-8">
-                            privacy@pharmanet.com
-                        </a>
+                        {/* Footer Contact - Simple & Clean */}
+                        <div className="text-center bg-white border border-gray-100 p-12 rounded-[40px] shadow-sm">
+                            <p className="text-gray-400 text-sm mb-4">Privacy questions? Reach out to our Data Officer</p>
+                            <a href="mailto:privacy@pharmanet.com" className="text-2xl font-bold text-gray-900 hover:text-primary transition-colors underline decoration-secondary decoration-4 underline-offset-8">
+                                privacy@pharmanet.com
+                            </a>
+                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
