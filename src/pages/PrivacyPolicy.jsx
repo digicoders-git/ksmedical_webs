@@ -134,13 +134,13 @@ const PrivacyPolicy = () => {
                     </div>
 
                         {/* Footer Contact - Modern & Bold */}
-                        <div className="text-center bg-gradient-to-br from-primary/5 to-secondary/5 border-2 border-primary/20 p-12 rounded-[40px] shadow-xl">
-                            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
-                                <Shield className="w-3.5 h-3.5" />
+                        <div className="text-center bg-gradient-to-br from-primary/5 to-secondary/5 border-2 border-primary/20 p-6 md:p-12 rounded-3xl md:rounded-[40px] shadow-xl">
+                            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 md:px-4 py-2 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 md:mb-6">
+                                <Shield className="w-3 h-3 md:w-3.5 md:h-3.5" />
                                 Need Help?
                             </div>
-                            <p className="text-gray-700 text-base mb-6 font-bold">Privacy questions? Reach out to our Data Officer</p>
-                            <a href="mailto:privacy@pharmanet.com" className="text-3xl font-extrabold text-primary hover:text-secondary transition-colors underline decoration-secondary decoration-4 underline-offset-8">
+                            <p className="text-gray-700 text-sm md:text-base mb-4 md:mb-6 font-bold px-4">Privacy questions? Reach out to our Data Officer</p>
+                            <a href="mailto:privacy@pharmanet.com" className="text-xl md:text-3xl font-extrabold text-primary hover:text-secondary transition-colors underline decoration-secondary decoration-2 md:decoration-4 underline-offset-4 md:underline-offset-8 break-all">
                                 privacy@pharmanet.com
                             </a>
                         </div>

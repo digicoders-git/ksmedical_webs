@@ -141,7 +141,6 @@ const Header = () => {
                     {/* Menu Items */}
                     <div className="flex-1 overflow-y-auto py-2">
                         <div className="px-4 py-2">
-                            <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Navigation</p>
                              {[
                                 { name: 'Home', path: '/' },
                                 { name: 'Blog', path: '/blog' },

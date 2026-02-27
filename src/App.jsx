@@ -1,8 +1,9 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import ScrollToTop from "./components/ScrollToTop"; // 👈 Make sure this is imported
+import ScrollToTop from "./components/ScrollToTop";
+import PageLoader from "./components/PageLoader";
 
 import Home from "./pages/Home";
 import CategoryProducts from "./pages/CategoryProducts";
@@ -22,9 +23,22 @@ import SpecialOffers from "./pages/SpecialOffers";
 import "./App.css";
 
 const AppContent = () => {
+  // const [loading, setLoading] = useState(false);
+  // const location = useLocation();
+
+  // useEffect(() => {
+  //   setLoading(true);
+  //   const timer = setTimeout(() => {
+  //     setLoading(false);
+  //   }, 800);
+
+  //   return () => clearTimeout(timer);
+  // }, [location.pathname]);
+
   return (
     <>
-      <ScrollToTop /> {/* 👈 Fragment ke andar rakha */}
+      <ScrollToTop />
+      {/* {loading && <PageLoader />} */}
       <div className="min-h-screen bg-white font-sans flex flex-col">
         <Header />
 

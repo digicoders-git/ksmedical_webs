@@ -64,15 +64,6 @@ const Blog = () => {
             {/* Content Section */}
             <div className="container mx-auto px-6 lg:px-20 max-w-7xl py-20 pb-48">
 
-                {/* Featured Categories */}
-                <div className="flex flex-wrap gap-3 mb-16">
-                    {['All Posts', 'Health Tips', 'Medicine', 'Wellness', 'News', 'Technology'].map((cat, i) => (
-                        <button key={i} className={`px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all ${i === 0 ? 'bg-primary text-white' : 'bg-white text-gray-400 hover:bg-gray-50 border border-gray-100'}`}>
-                            {cat}
-                        </button>
-                    ))}
-                </div>
-
                 {/* Blog Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
                     {/* Main Feed */}
