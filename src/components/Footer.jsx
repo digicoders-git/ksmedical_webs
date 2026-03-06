@@ -110,16 +110,16 @@ const Footer = () => {
               <div className="flex items-start gap-4 text-white/70 group">
                 <MapPin className="w-5 h-5 text-[#EA580C] shrink-0" />
                 <span className="font-light text-sm">
-                  2118 Thornridge Cir. Syracuse, CT 35624
+                  Shop No.18 UGF, Paramount, Cross Gate, Money Mounta, Plat No. 9A&9B, Saraswati Puram, Raebareli Road, Lucknow- 226014
                 </span>
               </div>
               <div className="flex items-center gap-4 text-white/70 group">
                 <Phone className="w-5 h-5 text-[#EA580C] shrink-0" />
-                <span className="font-light text-sm">+91 98765 43210</span>
+                <span className="font-light text-sm">9005606607</span>
               </div>
               <div className="flex items-center gap-4 text-white/70 group">
                 <Mail className="w-5 h-5 text-[#EA580C] shrink-0" />
-                <span className="font-light text-sm">care@pharmanet.com</span>
+                <span className="font-light text-sm">care@ks4.in</span>
               </div>
             </div>
           </div>

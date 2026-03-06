@@ -76,7 +76,7 @@ const Header = () => {
                         { name: 'Blog', path: '/blog' },
                         { name: 'FAQs', path: '/faqs' },
                         { name: 'Returns', path: '/returns' },
-                        { name: 'Master Policy', path: '/master-policy' },
+                        { name: 'Terms and Conditions', path: '/master-policy' },
                         { name: 'Privacy Policy', path: '/privacy-policy' },
                     ].map((item) => {
                         const isActive = location.pathname === item.path;
@@ -149,7 +149,7 @@ const Header = () => {
                                 { name: 'Blog', path: '/blog' },
                                 { name: 'FAQs', path: '/faqs' },
                                 { name: 'Returns', path: '/returns' },
-                                { name: 'Master Policy', path: '/master-policy' },
+                                { name: 'Terms and Conditions', path: '/master-policy' },
                                 { name: 'Privacy Policy', path: '/privacy-policy' },
                                 { name: 'Contact Us', path: '/contact-us' },
                              ].map((item) => {
