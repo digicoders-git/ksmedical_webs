@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const FeaturedSection = () => {
     return (
-        <section className="py-20 md:py-28 bg-white relative overflow-hidden">
+        <section className="py-20 md:py-28 bg-white relative overflow-hidden" id="discover-products">
             <div className="container mx-auto px-6 lg:px-12 relative z-10 w-full max-w-7xl">
                 
                 {/* Header Section */}

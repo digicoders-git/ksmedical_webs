@@ -69,12 +69,14 @@ const Header = () => {
                 </div>
 
                 {/* Navigation Bar - Desktop Only */}
-                <nav className="hidden lg:flex flex-1 justify-center items-center gap-12">
+                <nav className="hidden lg:flex flex-1 justify-center items-center gap-6">
                     {[
                         { name: 'Home', path: '/' },
+                        { name: 'About', path: '/about-us' },
                         { name: 'Blog', path: '/blog' },
-                        { name: 'About Us', path: '/about-us' },
                         { name: 'FAQs', path: '/faqs' },
+                        { name: 'Returns', path: '/returns' },
+                        { name: 'Master Policy', path: '/master-policy' },
                         { name: 'Privacy Policy', path: '/privacy-policy' },
                     ].map((item) => {
                         const isActive = location.pathname === item.path;
@@ -82,7 +84,7 @@ const Header = () => {
                             <Link 
                                 key={item.name} 
                                 to={item.path} 
-                                className={`text-base font-semibold transition-all relative group py-2 ${
+                                className={`text-sm font-semibold transition-all relative group py-2 ${
                                     isActive ? 'text-primary' : 'text-gray-600 hover:text-primary'
                                 }`}
                             >
@@ -143,9 +145,11 @@ const Header = () => {
                         <div className="px-4 py-2">
                              {[
                                 { name: 'Home', path: '/' },
-                                { name: 'Blog', path: '/blog' },
                                 { name: 'About Us', path: '/about-us' },
+                                { name: 'Blog', path: '/blog' },
                                 { name: 'FAQs', path: '/faqs' },
+                                { name: 'Returns', path: '/returns' },
+                                { name: 'Master Policy', path: '/master-policy' },
                                 { name: 'Privacy Policy', path: '/privacy-policy' },
                                 { name: 'Contact Us', path: '/contact-us' },
                              ].map((item) => {

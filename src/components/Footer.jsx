@@ -129,16 +129,18 @@ const Footer = () => {
             <h4 className="text-xl font-bold mb-8">Quick Links</h4>
             <ul className="space-y-4 text-white/70 font-light">
               <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
-              <li><Link to="/blog" className="hover:text-white transition-colors">Blog</Link></li>
               <li><Link to="/about-us" className="hover:text-white transition-colors">About Us</Link></li>
+              <li><Link to="/blog" className="hover:text-white transition-colors">Blog</Link></li>
               <li><Link to="/faqs" className="hover:text-white transition-colors">FAQs</Link></li>
+              <li><Link to="/returns" className="hover:text-white transition-colors">Returns</Link></li>
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Policies */}
           <div>
-            <h4 className="text-xl font-bold mb-8">Contact Info</h4>
+            <h4 className="text-xl font-bold mb-8">Policies</h4>
             <ul className="space-y-4 text-white/70 font-light mb-8">
+              <li><Link to="/master-policy" className="hover:text-white transition-colors">Master Policy</Link></li>
               <li><Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
               <li><Link to="/contact-us" className="hover:text-white transition-colors">Contact Us</Link></li>
             </ul>

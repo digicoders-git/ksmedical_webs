@@ -27,17 +27,20 @@ const Hero = () => {
               <span className="text-primary">accessible to all</span>
             </h1>
             
-            <p className="text-lg md:text-xl text-gray-700 mb-10 font-light tracking-wide max-w-lg">
+            <p className="text-lg md:text-xl text-gray-900 mb-10 font-bold tracking-wide max-w-lg">
               Celebrate your health with our premium pharmaceutical products and dedicated care.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link 
-                to="/category/medicines" 
+              <button 
+                onClick={() => {
+                  const element = document.getElementById('discover-products');
+                  element?.scrollIntoView({ behavior: 'smooth' });
+                }}
                 className="px-8 py-4 bg-secondary text-white font-bold rounded shadow-[0_4px_14px_0_rgba(216,27,31,0.39)] hover:bg-secondary-dark hover:shadow-[0_6px_20px_rgba(216,27,31,0.23)] hover:-translate-y-1 transition-all duration-300 text-center"
               >
                 Explore Medicines
-              </Link>
+              </button>
               <Link 
                 to="/about-us" 
                 className="px-8 py-4 bg-white text-primary font-bold rounded border-2 border-primary hover:bg-primary hover:text-white transition-all duration-300 text-center"

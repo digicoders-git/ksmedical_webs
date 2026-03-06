@@ -1,62 +1,23 @@
 import React, { useEffect } from 'react';
-import { 
-    Shield, 
-    Lock, 
-    Eye, 
-    FileText, 
-    ChevronRight, 
-    Database, 
-    Server, 
-    UserCheck,
-    AlertCircle,
-    ArrowRight
-} from 'lucide-react';
+import { Shield, Lock, Database, UserCheck, Eye, Cookie } from 'lucide-react';
 
 const PrivacyPolicy = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
-    const sections = [
-        {
-            icon: <Database className="w-6 h-6" />,
-            title: "Data We Collect",
-            subtitle: "Personal & Clinical Data",
-            content: "We collect information you provide directly to us, such as when you create an account, place an order, or subscribe to our newsletter. This includes your name, shipping address, and vital medical prescriptions required for pharmaceutical verification.",
-            color: "bg-blue-50 text-blue-600"
-        },
-        {
-            icon: <Server className="w-6 h-6" />,
-            title: "How We Store It",
-            subtitle: "Military-Grade Encryption",
-            content: "Your sensitive files and health records are stored on hyper-secure, encrypted servers. We use 256-bit SSL encryption to ensure that even during transit, your data remains invisible to unauthorized parties.",
-            color: "bg-green-50 text-green-600"
-        },
-        {
-            icon: <UserCheck className="w-6 h-6" />,
-            title: "Who Can See It",
-            subtitle: "Authorized Personnel Only",
-            content: "Access to your medical records is strictly limited to our licensed pharmacists and verified medical staff. We never sell your personal data to third-party marketing agencies—your privacy is not a commodity.",
-            color: "bg-purple-50 text-purple-600"
-        }
-    ];
-
     return (
-        <div className="relative bg-white font-sans overflow-hidden">
+        <div className="bg-white font-sans">
             {/* Hero Section - Full Width Background */}
             <div className="bg-[rgb(6,51,26)] pt-[120px] lg:pt-[140px] pb-16">
                 <div className="container mx-auto px-6 lg:px-12">
-                    <div className="max-w-5xl mx-auto text-center">
-                        <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
-                            <Shield className="w-3.5 h-3.5" />
-                            Security First
-                        </div>
-                        <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-6">
-                            Your Health, <br/>
-                            <span className="text-secondary">Your Privacy.</span>
-                        </h1>
-                        <p className="text-white/90 text-lg font-semibold leading-relaxed max-w-2xl mx-auto">
-                            At PharmaNet, we protect your data as carefully as your health. Learn how we handle your digital footprint.
+                    <div className="text-center">
+                        <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6">PRIVACY POLICY</h1>
+                        <p className="text-xl md:text-2xl text-white font-semibold mb-6">
+                            Secure. Confidential. Compliant.
+                        </p>
+                        <p className="text-lg text-white/90 max-w-4xl mx-auto leading-relaxed">
+                            KS4 PharmaNet is committed to protecting the privacy and confidentiality of our users' personal information. This policy explains how we collect, use, store, and protect your data.
                         </p>
                     </div>
                 </div>
@@ -64,85 +25,243 @@ const PrivacyPolicy = () => {
 
             {/* Content Section */}
             <div className="pb-48">
-                <div className="container mx-auto px-6 lg:px-12">
-                    <div className="max-w-5xl mx-auto">
-                        
-                        {/* Features/Stats Bar */}
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-24 mt-20">
-                        {[
-                            { label: 'GDPR Compliant', icon: <CheckCircle className="w-4 h-4" /> },
-                            { label: 'SSL Secured', icon: <Lock className="w-4 h-4" /> },
-                            { label: '24/7 Monitoring', icon: <Eye className="w-4 h-4" /> },
-                            { label: 'No Data Sale', icon: <Shield className="w-4 h-4" /> }
-                        ].map(item => (
-                            <div key={item.label} className="flex items-center justify-center gap-3 bg-white py-4 px-6 rounded-2xl border border-gray-100 shadow-sm">
-                                <span className="text-primary">{item.icon}</span>
-                                <span className="text-sm font-bold text-gray-700">{item.label}</span>
-                            </div>
-                        ))}
-                    </div>
-
-                    {/* Policy Sections Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
-                        {sections.map((section, idx) => (
-                            <div key={idx} className="group bg-white p-10 rounded-[40px] shadow-sm border border-gray-100 hover:shadow-2xl hover:border-primary/20 transition-all duration-500 flex flex-col items-center text-center">
-                                <div className={`${section.color} p-6 rounded-[30px] mb-8 group-hover:scale-110 transition-transform duration-500`}>
-                                    {section.icon}
+                {/* Policy Content */}
+                <div className="container mx-auto px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-20">
+                    <div className="max-w-6xl mx-auto">
+                        {/* Header Info Card */}
+                        <div className="bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl sm:rounded-3xl p-6 sm:p-8 mb-8 sm:mb-12 border border-gray-100">
+                            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                                <div>
+                                    <h2 className="text-2xl sm:text-3xl font-bold text-[#06331A] mb-2">KS4 PharmaNet</h2>
+                                    <p className="text-sm sm:text-base text-gray-600 font-medium">Company Name</p>
                                 </div>
-                                <h4 className="text-[10px] font-extrabold text-primary uppercase tracking-[0.2em] mb-2">{section.subtitle}</h4>
-                                <h3 className="text-xl font-bold text-gray-900 mb-4">{section.title}</h3>
-                                <p className="text-gray-600 text-sm leading-relaxed font-semibold">
-                                    {section.content}
-                                </p>
+                                <div className="sm:text-right">
+                                    <p className="text-xl sm:text-2xl font-bold text-primary mb-2">28-02-2026</p>
+                                    <p className="text-sm sm:text-base text-gray-600 font-medium">Effective Date</p>
+                                </div>
                             </div>
-                        ))}
-                    </div>
+                        </div>
 
-                    {/* Deep Info Section */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
-                        <div className="space-y-8">
-                            <div>
-                                <h2 className="text-3xl font-bold text-gray-900 mb-6">How your data flows</h2>
-                                <p className="text-gray-600 leading-relaxed font-semibold">
-                                    Transparency is at the heart of our operations. We want you to know exactly how your information is used to improve your healthcare experience.
-                                </p>
-                            </div>
-                            <div className="space-y-4">
-                                {[
-                                    'Encrypted collection of prescriptions',
-                                    'Verification by a licensed clinical pharamcist',
-                                    'Secure dispatch handling for home delivery',
-                                    'Automated deletion of expired health records'
-                                ].map((step, i) => (
-                                    <div key={i} className="flex items-center gap-4 bg-gray-50 p-4 rounded-2xl border border-gray-100 group cursor-default">
-                                        <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-xs font-bold text-primary shadow-sm group-hover:bg-primary group-hover:text-white transition-colors">0{i+1}</div>
-                                        <span className="text-sm text-gray-700 font-bold">{step}</span>
+                        {/* Section 1: Introduction */}
+                        <div className="mb-8 sm:mb-12">
+                            <div className="bg-white p-6 sm:p-8 rounded-2xl sm:rounded-3xl shadow-lg border border-gray-100">
+                                <div className="flex items-start gap-3 sm:gap-4 mb-4">
+                                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0">
+                                        <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                                     </div>
-                                ))}
+                                    <h3 className="text-lg sm:text-xl font-bold text-[#06331A]">1. Introduction</h3>
+                                </div>
+                                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                                    KS4 PharmaNet ("Company", "we", "our", or "us") is committed to protecting the privacy and confidentiality of our users' personal information. This Privacy Policy explains how we collect, use, store, and protect your information when you access our website or mobile application.
+                                </p>
                             </div>
                         </div>
-                        <div className="bg-primary/5 p-12 rounded-[50px] border border-primary/10 relative overflow-hidden">
-                            <AlertCircle className="absolute -top-10 -right-10 w-48 h-48 text-primary/5" />
-                            <h3 className="text-2xl font-bold text-gray-900 mb-6 relative z-10">Important Notice</h3>
-                            <p className="text-gray-700 text-sm leading-loose mb-8 relative z-10 font-semibold">
-                                This policy is subject to change as we integrate newer security technologies. We will notify all registered users via email 30 days before any major update.
+
+                        {/* Section 2: Information We Collect */}
+                        <div className="mb-8 sm:mb-12">
+                            <div className="bg-white p-6 sm:p-8 rounded-2xl sm:rounded-3xl shadow-lg border border-gray-100">
+                                <div className="flex items-start gap-3 sm:gap-4 mb-4">
+                                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-secondary/10 rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0">
+                                        <Database className="w-5 h-5 sm:w-6 sm:h-6 text-secondary" />
+                                    </div>
+                                    <h3 className="text-lg sm:text-xl font-bold text-[#06331A]">2. Information We Collect</h3>
+                                </div>
+                                <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4">We may collect the following types of information:</p>
+                                <ul className="text-sm sm:text-base text-gray-600 leading-relaxed space-y-2">
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-primary mt-1 shrink-0">•</span>
+                                        <span><strong>Personal Information:</strong> Name, mobile number, email address, and contact details.</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-primary mt-1 shrink-0">•</span>
+                                        <span><strong>KYC Information:</strong> Aadhaar number, PAN, and bank account details (for reward withdrawal).</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-primary mt-1 shrink-0">•</span>
+                                        <span><strong>Transaction Information:</strong> Order details, payment records, wallet transactions.</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-primary mt-1 shrink-0">•</span>
+                                        <span><strong>Prescription Information:</strong> Uploaded medical prescriptions where applicable.</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-primary mt-1 shrink-0">•</span>
+                                        <span><strong>Technical Information:</strong> IP address, device type, browser type, and usage analytics.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        {/* Section 3 & 4: Grid Layout */}
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
+                            {/* Section 3 */}
+                            <div className="bg-white p-6 sm:p-8 rounded-2xl sm:rounded-3xl shadow-lg border border-gray-100">
+                                <h3 className="text-lg sm:text-xl font-bold text-[#06331A] mb-4">3. Purpose of Data Collection</h3>
+                                <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-3">Your information is collected for the following purposes:</p>
+                                <ul className="text-sm sm:text-base text-gray-600 leading-relaxed space-y-2">
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-primary mt-1 shrink-0">•</span>
+                                        <span>Processing and fulfilling orders.</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-primary mt-1 shrink-0">•</span>
+                                        <span>Verification of prescriptions and regulatory compliance.</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-primary mt-1 shrink-0">•</span>
+                                        <span>Referral reward calculation and TDS deduction.</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-primary mt-1 shrink-0">•</span>
+                                        <span>Fraud detection and prevention.</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-primary mt-1 shrink-0">•</span>
+                                        <span>Improving platform functionality and customer experience.</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            {/* Section 4 */}
+                            <div className="bg-white p-6 sm:p-8 rounded-2xl sm:rounded-3xl shadow-lg border border-gray-100">
+                                <h3 className="text-lg sm:text-xl font-bold text-[#06331A] mb-4">4. Data Sharing</h3>
+                                <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-3">We do not sell or rent your personal information. Information may be shared only with:</p>
+                                <ul className="text-sm sm:text-base text-gray-600 leading-relaxed space-y-2">
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-primary mt-1 shrink-0">•</span>
+                                        <span>Authorized payment gateway providers for transaction processing.</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-primary mt-1 shrink-0">•</span>
+                                        <span>Banking partners for settlement and payouts.</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-primary mt-1 shrink-0">•</span>
+                                        <span>Government authorities where required by law.</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-primary mt-1 shrink-0">•</span>
+                                        <span>Technology service providers under confidentiality agreements.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        {/* Section 5, 6, 7: Grid Layout */}
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12">
+                            <div className="bg-white p-6 sm:p-8 rounded-2xl sm:rounded-3xl shadow-lg border border-gray-100">
+                                <div className="flex items-start gap-3 mb-4">
+                                    <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
+                                        <Lock className="w-5 h-5 text-primary" />
+                                    </div>
+                                    <h3 className="text-lg sm:text-xl font-bold text-[#06331A]">5. Data Security</h3>
+                                </div>
+                                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                                    We implement appropriate technical and organizational security measures including encryption, restricted access controls, and secure servers to protect your personal information from unauthorized access, alteration, disclosure, or destruction.
+                                </p>
+                            </div>
+
+                            <div className="bg-white p-6 sm:p-8 rounded-2xl sm:rounded-3xl shadow-lg border border-gray-100">
+                                <div className="flex items-start gap-3 mb-4">
+                                    <div className="w-10 h-10 bg-secondary/10 rounded-xl flex items-center justify-center shrink-0">
+                                        <Database className="w-5 h-5 text-secondary" />
+                                    </div>
+                                    <h3 className="text-lg sm:text-xl font-bold text-[#06331A]">6. Data Retention</h3>
+                                </div>
+                                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                                    Personal information is retained only for as long as necessary to fulfill business, legal, and regulatory obligations.
+                                </p>
+                            </div>
+
+                            <div className="bg-white p-6 sm:p-8 rounded-2xl sm:rounded-3xl shadow-lg border border-gray-100">
+                                <div className="flex items-start gap-3 mb-4">
+                                    <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
+                                        <UserCheck className="w-5 h-5 text-primary" />
+                                    </div>
+                                    <h3 className="text-lg sm:text-xl font-bold text-[#06331A]">7. User Rights</h3>
+                                </div>
+                                <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-3">Users have the right to:</p>
+                                <ul className="text-sm sm:text-base text-gray-600 leading-relaxed space-y-2">
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-primary mt-1 shrink-0">•</span>
+                                        <span>Access and update their personal information.</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-primary mt-1 shrink-0">•</span>
+                                        <span>Request correction of inaccurate information.</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-primary mt-1 shrink-0">•</span>
+                                        <span>Request account deactivation subject to legal obligations.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        {/* Section 8 & 9: Full Width */}
+                        <div className="space-y-6 sm:space-y-8 mb-8 sm:mb-12">
+                            <div className="bg-gradient-to-br from-primary/5 to-primary/10 p-6 sm:p-8 rounded-2xl sm:rounded-3xl shadow-lg border border-primary/20">
+                                <div className="flex items-start gap-3 mb-4">
+                                    <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shrink-0">
+                                        <Cookie className="w-5 h-5 text-primary" />
+                                    </div>
+                                    <h3 className="text-lg sm:text-xl font-bold text-[#06331A]">8. Cookies & Tracking</h3>
+                                </div>
+                                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                                    Our website may use cookies and analytics tools to enhance user experience and monitor platform performance.
+                                </p>
+                            </div>
+
+                            <div className="bg-gradient-to-br from-secondary/5 to-secondary/10 p-6 sm:p-8 rounded-2xl sm:rounded-3xl shadow-lg border border-secondary/20">
+                                <div className="flex items-start gap-3 mb-4">
+                                    <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shrink-0">
+                                        <Eye className="w-5 h-5 text-secondary" />
+                                    </div>
+                                    <h3 className="text-lg sm:text-xl font-bold text-[#06331A]">9. Changes to Privacy Policy</h3>
+                                </div>
+                                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                                    KS4 PharmaNet reserves the right to modify this Privacy Policy at any time. Updates will be posted on the website with a revised effective date.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Section 10: Contact Information */}
+                        <div className="bg-white p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl shadow-lg border border-gray-100">
+                            <h3 className="text-xl sm:text-2xl font-bold text-[#06331A] mb-6">10. Contact Information</h3>
+                            <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-6">
+                                For any privacy-related concerns, please contact:
                             </p>
-                            <button className="flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all group relative z-10">
-                                Learn about Cookie Policy <ArrowRight className="w-4 h-4" />
-                            </button>
+                            <div className="bg-gradient-to-br from-primary/5 to-secondary/5 p-6 rounded-2xl">
+                                <h4 className="text-lg font-bold text-[#06331A] mb-4">KS4 PharmaNet</h4>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div className="flex items-center gap-3">
+                                        <span className="font-bold text-primary">Mobile:</span>
+                                        <a href="tel:9005606607" className="text-gray-700 hover:text-primary transition-colors">9005606607</a>
+                                    </div>
+                                    <div className="flex items-center gap-3">
+                                        <span className="font-bold text-primary">Email:</span>
+                                        <a href="mailto:care@ks4.in" className="text-gray-700 hover:text-primary transition-colors">care@ks4.in</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                </div>
 
-                        {/* Footer Contact - Modern & Bold */}
-                        <div className="text-center bg-gradient-to-br from-primary/5 to-secondary/5 border-2 border-primary/20 p-6 md:p-12 rounded-3xl md:rounded-[40px] shadow-xl">
-                            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 md:px-4 py-2 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 md:mb-6">
-                                <Shield className="w-3 h-3 md:w-3.5 md:h-3.5" />
-                                Need Help?
+                {/* Contact Section */}
+                <div className="bg-[rgb(6,51,26)] py-12 sm:py-16 lg:py-20">
+                    <div className="container mx-auto px-4 sm:px-6 lg:px-12">
+                        <div className="text-center">
+                            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6">Questions About Privacy?</h3>
+                            <p className="text-sm sm:text-base text-white/90 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">Contact our support team for any privacy-related queries.</p>
+                            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 px-4">
+                                <a href="tel:9005606607" className="bg-secondary text-[#06331A] px-8 sm:px-10 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-bold hover:bg-secondary/90 transition-all shadow-xl text-sm sm:text-base">
+                                    Call: 9005606607
+                                </a>
+                                <a href="mailto:care@ks4.in" className="bg-white/10 backdrop-blur-sm text-white px-8 sm:px-10 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-bold hover:bg-white/20 transition-all border border-white/20 text-sm sm:text-base">
+                                    Email: care@ks4.in
+                                </a>
                             </div>
-                            <p className="text-gray-700 text-sm md:text-base mb-4 md:mb-6 font-bold px-4">Privacy questions? Reach out to our Data Officer</p>
-                            <a href="mailto:privacy@pharmanet.com" className="text-xl md:text-3xl font-extrabold text-primary hover:text-secondary transition-colors underline decoration-secondary decoration-2 md:decoration-4 underline-offset-4 md:underline-offset-8 break-all">
-                                privacy@pharmanet.com
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -150,12 +269,5 @@ const PrivacyPolicy = () => {
         </div>
     );
 };
-
-// Small utility for the inner stat bar
-const CheckCircle = ({className}) => (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-    </svg>
-);
 
 export default PrivacyPolicy;

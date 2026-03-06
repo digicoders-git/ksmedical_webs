@@ -1,102 +1,169 @@
 import React, { useEffect } from 'react';
-import { RefreshCcw, ShieldCheck, Clock, Truck, ArrowRight, CornerUpLeft } from 'lucide-react';
+import { FileText, XCircle, RefreshCw, Shield } from 'lucide-react';
 
 const ReturnsExchanges = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
-    const steps = [
-        {
-            title: "Initiate Return",
-            desc: "Go to your 'Order History' and select 'Return Request' for the items you wish to send back.",
-            icon: CornerUpLeft
-        },
-        {
-            title: "Pack the items",
-            desc: "Place the products in their original packaging with all labels and seals intact.",
-            icon: RefreshCcw
-        },
-        {
-            title: "Hand over",
-            desc: "Our delivery partner will collect the package from your doorstep at a scheduled time.",
-            icon: Truck
-        },
-        {
-            title: "Refund Processed",
-            desc: "Once specialized verification is complete, your refund will be credited back in 3-5 days.",
-            icon: ShieldCheck
-        }
-    ];
-
     return (
-        <div className="bg-[#fcfdfc] pt-[120px] lg:pt-[200px] pb-48 font-sans">
-            <div className="container mx-auto px-6 lg:px-20 max-w-7xl">
-                {/* Hero section */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-32">
-                    <div>
-                        <div className="inline-block bg-primary/10 text-primary px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-8">
-                            Trust & Flexibility
-                        </div>
-                        <h1 className="text-5xl md:text-7xl font-extrabold text-[#06331A] mb-8 tracking-tight leading-tight">
-                            Returns <span className="text-secondary">&</span> <br/> Exchanges
-                        </h1>
-                        <p className="text-gray-400 text-xl font-light mb-12 leading-relaxed">
-                            We want you to be completely satisfied with your purchase. Our transparent return policy ensures a worry-free shopping experience for all health products.
+        <div className="bg-white font-sans">
+            {/* Hero Section - Full Width Background */}
+            <div className="bg-[rgb(6,51,26)] pt-[120px] lg:pt-[140px] pb-16">
+                <div className="container mx-auto px-6 lg:px-12">
+                    <div className="text-center">
+                        <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6">CANCELLATION POLICY</h1>
+                        <p className="text-xl md:text-2xl text-white font-semibold mb-6">
+                            Transparent. Fair. Customer-Centric.
                         </p>
-                        <div className="flex gap-4">
-                            <button className="bg-[#06331A] text-white px-10 py-5 rounded-2xl font-bold hover:scale-105 transition-all shadow-xl shadow-primary/10">
-                                My Order History
-                            </button>
-                            <button className="border-2 border-gray-100 text-[#06331A] px-10 py-5 rounded-2xl font-bold hover:bg-gray-50 transition-all">
-                                Track Order
-                            </button>
-                        </div>
-                    </div>
-                    <div className="relative">
-                        <div className="bg-primary rounded-[60px] p-12 lg:p-20 text-white relative overflow-hidden">
-                             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-                             <Clock className="w-16 h-16 text-secondary mb-8" />
-                             <h3 className="text-3xl font-bold mb-4">30-Day Window</h3>
-                             <p className="text-white/70 text-lg leading-relaxed font-light mb-10">
-                                Most of our wellness products, supplements and devices can be returned within 30 days of delivery.
-                             </p>
-                             <div className="bg-white/10 p-6 rounded-3xl border border-white/20">
-                                <p className="text-xs font-bold uppercase tracking-widest mb-2 text-secondary">Exceptions</p>
-                                <p className="text-sm font-light text-white/80">Prescription medications cannot be returned once delivered for health and safety reasons.</p>
-                             </div>
-                        </div>
-                        {/* Decorative element */}
-                        <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-secondary rounded-full -z-10 animate-pulse"></div>
+                        <p className="text-lg text-white/90 max-w-4xl mx-auto leading-relaxed">
+                            At KS4 PharmaNet, we believe in clear and customer-friendly cancellation terms. This policy ensures you have complete control over your orders with hassle-free refund processing.
+                        </p>
                     </div>
                 </div>
+            </div>
 
-                {/* Process Steps */}
-                <div className="mb-40">
-                    <h2 className="text-4xl font-extrabold text-[#06331A] mb-20 text-center">How it works</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-                        {steps.map((step, idx) => (
-                            <div key={idx} className="relative">
-                                <div className="w-20 h-20 bg-white rounded-3xl shadow-xl shadow-gray-100 border border-gray-50 flex items-center justify-center mb-8">
-                                    <step.icon className="w-8 h-8 text-primary" />
+            {/* Content Section */}
+            <div className="pb-48">
+
+                {/* Policy Content */}
+                <div className="container mx-auto px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-20">
+                    <div className="max-w-6xl mx-auto">
+                        {/* Header Info Card */}
+                        <div className="bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl sm:rounded-3xl p-6 sm:p-8 mb-8 sm:mb-12 border border-gray-100">
+                            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                                <div>
+                                    <h2 className="text-2xl sm:text-3xl font-bold text-[#06331A] mb-2">KS4 PharmaNet</h2>
+                                    <p className="text-sm sm:text-base text-gray-600 font-medium">Company Name</p>
                                 </div>
-                                <h4 className="text-xl font-bold text-[#06331A] mb-4">0{idx+1}. {step.title}</h4>
-                                <p className="text-gray-400 font-light text-sm leading-relaxed">{step.desc}</p>
-                                {idx < steps.length - 1 && (
-                                    <div className="hidden lg:block absolute top-10 -right-6 w-12 h-[2px] bg-gray-100"></div>
-                                )}
+                                <div className="sm:text-right">
+                                    <p className="text-xl sm:text-2xl font-bold text-primary mb-2">28-02-2026</p>
+                                    <p className="text-sm sm:text-base text-gray-600 font-medium">Effective Date</p>
+                                </div>
                             </div>
-                        ))}
+                        </div>
+
+                        {/* Policy Sections Grid */}
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
+                            {/* Section 1 */}
+                            <div className="bg-white p-6 sm:p-8 rounded-2xl sm:rounded-3xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+                                <div className="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
+                                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0">
+                                        <XCircle className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+                                    </div>
+                                    <h3 className="text-lg sm:text-xl font-bold text-[#06331A]">1. Order Cancellation by Customer</h3>
+                                </div>
+                                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                                    To cancel an order, customers may use the cancellation option in the mobile application or contact customer support at <a href="tel:9005606607" className="font-semibold text-primary hover:underline">9005606607</a> or <a href="mailto:care@ks4.in" className="font-semibold text-primary hover:underline">care@ks4.in</a>.
+                                </p>
+                            </div>
+
+                            {/* Section 2 */}
+                            <div className="bg-white p-6 sm:p-8 rounded-2xl sm:rounded-3xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+                                <div className="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
+                                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-secondary/10 rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0">
+                                        <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-secondary" />
+                                    </div>
+                                    <h3 className="text-lg sm:text-xl font-bold text-[#06331A]">2. Cancellation of Prescription Medicines</h3>
+                                </div>
+                                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                                    Prescription medicines can only be cancelled before dispatch. Once delivered, prescription medicines are non-returnable except in case of damage, wrong supply, or quality issues.
+                                </p>
+                            </div>
+
+                            {/* Section 3 */}
+                            <div className="bg-white p-6 sm:p-8 rounded-2xl sm:rounded-3xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+                                <div className="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
+                                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0">
+                                        <RefreshCw className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+                                    </div>
+                                    <h3 className="text-lg sm:text-xl font-bold text-[#06331A]">3. Refund on Cancellation</h3>
+                                </div>
+                                <ul className="text-sm sm:text-base text-gray-600 leading-relaxed space-y-2 sm:space-y-3">
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-primary mt-1 shrink-0">•</span>
+                                        <span>If cancellation is approved before dispatch, the refund will be processed to the original payment method within 5–7 working days.</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-primary mt-1 shrink-0">•</span>
+                                        <span>If the payment was made using wallet balance, the refund shall be credited back to the wallet.</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            {/* Section 5 */}
+                            <div className="bg-white p-6 sm:p-8 rounded-2xl sm:rounded-3xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+                                <div className="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
+                                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-secondary/10 rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0">
+                                        <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-secondary" />
+                                    </div>
+                                    <h3 className="text-lg sm:text-xl font-bold text-[#06331A]">5. Referral Reward Adjustment</h3>
+                                </div>
+                                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                                    In case of cancellation, any referral rewards credited for that order will be reversed from the respective wallet accounts.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Section 4 - Full Width */}
+                        <div className="bg-gradient-to-br from-primary/5 to-primary/10 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl shadow-lg border border-primary/20 mb-8 sm:mb-12">
+                            <h3 className="text-xl sm:text-2xl font-bold text-[#06331A] mb-4 sm:mb-6">4. Company-Initiated Cancellation</h3>
+                            <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4 sm:mb-6">
+                                KS4 PharmaNet reserves the right to cancel orders under the following circumstances:
+                            </p>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6">
+                                <div className="flex items-start gap-2 sm:gap-3">
+                                    <span className="text-primary mt-1 shrink-0">•</span>
+                                    <span className="text-sm sm:text-base text-gray-700">Invalid or unverifiable prescription.</span>
+                                </div>
+                                <div className="flex items-start gap-2 sm:gap-3">
+                                    <span className="text-primary mt-1 shrink-0">•</span>
+                                    <span className="text-sm sm:text-base text-gray-700">Product out of stock.</span>
+                                </div>
+                                <div className="flex items-start gap-2 sm:gap-3">
+                                    <span className="text-primary mt-1 shrink-0">•</span>
+                                    <span className="text-sm sm:text-base text-gray-700">Pricing error.</span>
+                                </div>
+                                <div className="flex items-start gap-2 sm:gap-3">
+                                    <span className="text-primary mt-1 shrink-0">•</span>
+                                    <span className="text-sm sm:text-base text-gray-700">Suspected fraudulent transaction.</span>
+                                </div>
+                                <div className="flex items-start gap-2 sm:gap-3 sm:col-span-2">
+                                    <span className="text-primary mt-1 shrink-0">•</span>
+                                    <span className="text-sm sm:text-base text-gray-700">Regulatory compliance restrictions.</span>
+                                </div>
+                            </div>
+                            <p className="text-sm sm:text-base text-gray-700 leading-relaxed font-semibold">
+                                In such cases, the full amount will be refunded to the original payment method.
+                            </p>
+                        </div>
+
+                        {/* Section 6 - Compliance */}
+                        <div className="bg-white p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl shadow-lg border border-gray-100">
+                            <h3 className="text-xl sm:text-2xl font-bold text-[#06331A] mb-4 sm:mb-6">6. Compliance</h3>
+                            <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                                This Cancellation Policy is framed in accordance with the <span className="font-bold text-primary">Consumer Protection Act, 2019</span> and <span className="font-bold text-primary">Consumer Protection (E-Commerce) Rules, 2020</span>.
+                            </p>
+                        </div>
                     </div>
                 </div>
 
-                {/* FAQ Link Section */}
-                <div className="bg-gray-50 rounded-[50px] p-12 md:p-20 text-center border border-gray-100">
-                    <h2 className="text-3xl font-extrabold text-[#06331A] mb-6">Have more questions?</h2>
-                    <p className="text-gray-500 mb-10 max-w-xl mx-auto">Visit our Help Center for detailed information about specific product categories and regional policies.</p>
-                    <button className="flex items-center gap-3 text-primary font-bold text-lg mx-auto hover:gap-5 transition-all">
-                        Go to FAQ Center <ArrowRight className="w-5 h-5" />
-                    </button>
+                {/* Contact Section */}
+                <div className="bg-[rgb(6,51,26)] py-12 sm:py-16 lg:py-20">
+                    <div className="container mx-auto px-4 sm:px-6 lg:px-12">
+                        <div className="text-center">
+                            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6">Need Help with Cancellation?</h3>
+                            <p className="text-sm sm:text-base text-white/90 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">Contact our support team for any queries regarding order cancellations and refunds.</p>
+                            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 px-4">
+                                <a href="tel:9005606607" className="bg-secondary text-[#06331A] px-8 sm:px-10 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-bold hover:bg-secondary/90 transition-all shadow-xl text-sm sm:text-base">
+                                    Call: 9005606607
+                                </a>
+                                <a href="mailto:care@ks4.in" className="bg-white/10 backdrop-blur-sm text-white px-8 sm:px-10 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-bold hover:bg-white/20 transition-all border border-white/20 text-sm sm:text-base">
+                                    Email: care@ks4.in
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

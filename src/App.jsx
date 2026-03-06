@@ -19,6 +19,8 @@ import FAQs from "./pages/FAQs";
 import ReturnsExchanges from "./pages/ReturnsExchanges";
 import Support from "./pages/Support";
 import SpecialOffers from "./pages/SpecialOffers";
+import ShopAll from "./pages/ShopAll";
+import MasterPolicy from "./pages/MasterPolicy";
 
 import "./App.css";
 
@@ -61,6 +63,8 @@ const AppContent = () => {
             <Route path="/returns" element={<ReturnsExchanges />} />
             <Route path="/support" element={<Support />} />
             <Route path="/offers" element={<SpecialOffers />} />
+            <Route path="/shop" element={<ShopAll />} />
+            <Route path="/master-policy" element={<MasterPolicy />} />
           </Routes>
         </div>
 
