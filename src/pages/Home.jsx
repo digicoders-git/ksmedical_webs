@@ -11,9 +11,10 @@ const Home = () => {
     <main>
       <Hero />
       <FeaturedSection />
-      <CategoryShowcase />
       <LatestProducts />
       <ImageCarousel />
+      <CategoryShowcase />
+
       <Advantages />
     </main>
   );

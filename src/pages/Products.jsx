@@ -105,9 +105,17 @@ const Products = () => {
       </div>
 
       {/* Content Section */}
-      <div className="py-24 pb-32 bg-gradient-to-b from-white via-gray-50 to-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-12">
-          <div className="max-w-7xl mx-auto">
+      <div className="py-16 pb-32 bg-gradient-to-b from-white via-gray-50 to-white">
+        <div className="w-full">
+          
+          {/* Our Products Header */}
+          <div className="text-left mb-12 pl-4 md:pl-20">
+            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-3 border-b-4 border-primary inline-block pb-2">
+              Our Products
+            </h2>
+          </div>
+
+          <div className="px-4 sm:px-6 lg:px-12">
 
             {/* Loading State */}
             {loading ? (
@@ -117,7 +125,7 @@ const Products = () => {
             ) : (
               <>
                 {/* Products Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
 
                   {products.map((product, index) => (
 
@@ -217,7 +225,7 @@ ${product.stock > 0
                 </div>
 
                 {/* Results Count */}
-                <div className="text-center text-gray-600 font-medium pb-20">
+                <div className="text-center text-gray-600 font-medium py-8">
                   Showing {products.length} products
                 </div>
               </>

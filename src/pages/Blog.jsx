@@ -100,7 +100,7 @@ const Blog = () => {
                     </div>
 
                     {/* CTA Section */}
-                    <div className="mt-20 lg:mt-28 bg-gradient-to-r from-[#EA580C]/10 to-[#EA580C]/5 rounded-3xl p-8 sm:p-12 lg:p-16 border-2 border-[#EA580C]/20">
+                    <div className="mt-20 lg:mt-28 mb-[100px] bg-gradient-to-r from-[#EA580C]/10 to-[#EA580C]/5 rounded-3xl p-8 sm:p-12 lg:p-16 border-2 border-[#EA580C]/20">
                         <div className="text-center max-w-2xl mx-auto">
                             <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#06331A] mb-4">Subscribe to Our Newsletter</h3>
                             <p className="text-base sm:text-lg text-gray-600 font-medium mb-8">Get weekly wellness tips and health insights delivered to your inbox.</p>

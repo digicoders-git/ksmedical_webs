@@ -1,80 +1,113 @@
-import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
-const products = [
-  {
-    id: 1,
-    name: "Collagen Peptides",
-   
-    image: "https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?auto=format&fit=crop&w=600&q=80",
-    badge: null
-  },
-  {
-    id: 2,
-    name: "Peppermint Softgels",
-   
-    image: "https://images.unsplash.com/photo-1584017911766-d451b3d0e843?auto=format&fit=crop&w=600&q=80",
-    badge: "On Sale"
-  },
-  {
-    id: 3,
-    name: "Spearmint Oil",
-    
-    image: "https://images.unsplash.com/photo-1602928321679-560bb453f190?auto=format&fit=crop&w=600&q=80",
-    badge: null
-  },
-  {
-    id: 4,
-    name: "Rice Protein",
-   
-    image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&w=600&q=80",
-    badge: null
-  }
-];
+import { Pill } from 'lucide-react';
 
 const LatestProducts = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch('https://ksmedial-enventory-backend.onrender.com/api/admin/products?scope=inventory');
+      const data = await response.json();
+      setProducts(data.products?.slice(0, 20) || []);
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      setLoading(false);
+    }
+  };
+
   return (
-    <section className="py-20 bg-[#06331A]"> {/* Dark green background */}
-      <div className="container mx-auto px-6 lg:px-20 max-w-7xl">
+    <section className="py-16 bg-gradient-to-br from-[#06331A] to-[#0a4525] relative overflow-hidden">
+      <div className="w-full relative z-10">
         
-        <div className="flex justify-between items-end mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight">
+        {/* Header Section */}
+        <div className="text-left mb-12 pl-4 md:pl-20">
+          <h2 className="text-2xl md:text-4xl font-bold text-white mb-3 border-b-4 border-secondary inline-block pb-2">
             Latest Products
           </h2>
+          <p className="text-white/70 text-sm md:text-base font-normal max-w-2xl leading-relaxed mt-4">
+            Discover our newest healthcare solutions
+          </p>
         </div>
 
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {products.map((product) => (
-            <div key={product.id} className="group flex flex-col">
-              
-              {/* Product Image */}
-              <div className="relative aspect-[3/4] rounded-lg overflow-hidden bg-white mb-6">
-                <img 
-                  src={product.image} 
-                  alt={product.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                
-                {/* Sale Badge */}
-                {product.badge && (
-                  <div className="absolute top-4 right-4 bg-white text-gray-900 text-[10px] font-bold px-3 py-1 rounded shadow-sm opacity-90">
-                    {product.badge}
+        {/* Loading State */}
+        {loading ? (
+          <div className="flex justify-center items-center py-20">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
+          </div>
+        ) : (
+          /* Horizontal Scrollable Products */
+          <div className="relative">
+            <div className="overflow-x-auto scrollbar-hide pb-4 pl-4 md:pl-20">
+              <div className="flex gap-4 min-w-max px-2">
+                {products.map((product) => (
+                  <div 
+                    key={product._id} 
+                    className="w-44 flex-shrink-0 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10 hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 group"
+                  >
+                    <div className="relative h-44 overflow-hidden bg-white">
+                      {product.image ? (
+                        <img 
+                          src={product.image} 
+                          alt={product.name}
+                          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center bg-gray-100">
+                          <Pill className="w-12 h-12 text-gray-300" />
+                        </div>
+                      )}
+                      
+                      {/* Discount Badge */}
+                      {product.discountPercent > 0 && (
+                        <div className="absolute top-3 right-3 bg-secondary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
+                          {product.discountPercent}% OFF
+                        </div>
+                      )}
+                      
+                      {/* Prescription Badge */}
+                      {product.isPrescriptionRequired && (
+                        <div className="absolute top-3 left-3 bg-red-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                          Rx
+                        </div>
+                      )}
+                    </div>
+                    
+                    <div className="p-3">
+                      <h3 className="text-sm font-bold text-white mb-1 group-hover:text-primary transition-colors line-clamp-2">
+                        {product.name}
+                      </h3>
+                      
+                      <Link 
+                        to="/products" 
+                        className="text-xs text-secondary font-semibold hover:underline"
+                      >
+                        View Details →
+                      </Link>
+                    </div>
                   </div>
-                )}
-              </div>
-
-              {/* Product Info */}
-              <div className="flex flex-col">
-                <h3 className="text-xl font-bold text-white mb-2 leading-tight">
-                  {product.name}
-                </h3>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        )}
       </div>
+
+      <style jsx>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </section>
   );
 };

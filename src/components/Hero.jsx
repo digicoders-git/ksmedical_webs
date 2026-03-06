@@ -1,124 +1,159 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FlaskConical, Sparkles, Milk, Droplet } from 'lucide-react';
+import { FlaskConical, Sparkles, Droplet, ChevronLeft, ChevronRight } from 'lucide-react';
+
+const slides = [
+  {
+    id: 1,
+    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80',
+    title: 'Health and wellness',
+    highlight: 'accessible to all',
+    description: 'Celebrate your health with our premium pharmaceutical products and dedicated care.'
+  },
+  {
+    id: 2,
+    image: 'https://images.unsplash.com/photo-1631549916768-4119b2e5f926?auto=format&fit=crop&q=80',
+    title: 'Quality medicines',
+    highlight: 'you can trust',
+    description: 'Sourced directly from certified manufacturers with rigorous quality checks.'
+  },
+  {
+    id: 3,
+    image: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&q=80',
+    title: 'Expert care',
+    highlight: 'always available',
+    description: 'Licensed pharmacists ready to assist you with professional consultation.'
+  },
+  {
+    id: 4,
+    image: 'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80',
+    title: 'Premium supplements',
+    highlight: 'for better health',
+    description: 'Natural health and wellness products to help you live your best life.'
+  },
+  {
+    id: 5,
+    image: 'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?auto=format&fit=crop&q=80',
+    title: 'Trusted pharmacy',
+    highlight: 'since years',
+    description: 'Your reliable partner in healthcare with authentic medicines and expert guidance.'
+  },
+  {
+    id: 6,
+    image: 'https://images.unsplash.com/photo-1628771065518-0d82f1938462?auto=format&fit=crop&q=80',
+    title: 'Fast delivery',
+    highlight: 'at your doorstep',
+    description: 'Quick and secure delivery of medicines right to your home.'
+  },
+  {
+    id: 7,
+    image: 'https://images.unsplash.com/photo-1550572017-4a6e8e8e1f3f?auto=format&fit=crop&q=80',
+    title: 'Affordable prices',
+    highlight: 'genuine products',
+    description: 'Quality healthcare products at transparent and fair pricing.'
+  },
+  {
+    id: 8,
+    image: 'https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?auto=format&fit=crop&q=80',
+    title: '24/7 support',
+    highlight: 'always here for you',
+    description: 'Round-the-clock customer support for all your healthcare needs.'
+  }
+];
 
 const Hero = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 7000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+
   return (
-    <div className="relative"> {/* Removed margin to eliminate gap */}
+    <div className="relative">
       
-      {/* Main Hero Section */}
-      <section className="relative min-h-[700px] lg:min-h-[900px] w-full overflow-hidden"> 
-        {/* Background Image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0 transform scale-105 transition-transform duration-[20s] hover:scale-100"
-          style={{ 
-            backgroundImage: "url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80')",
-          }}
-        >
-          {/* Gradient Overlay for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/40 to-transparent"></div>
-        </div>
-  
-        {/* Hero Content - Added PT to clear fixed header and increased height */}
-        <div className="relative z-10 container mx-auto px-6 lg:px-12 min-h-[700px] lg:min-h-[900px] flex flex-col justify-center pt-[120px] lg:pt-[180px] pb-32"> 
-          <div className="max-w-2xl animate-fade-in-up">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 tracking-tight text-gray-900">
-              Health and wellness <br/>
-              <span className="text-primary">accessible to all</span>
-            </h1>
-            
-            <p className="text-base md:text-lg text-gray-700 mb-10 font-medium tracking-wide max-w-lg">
-              Celebrate your health with our premium pharmaceutical products and dedicated care.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button 
-                onClick={() => {
-                  const element = document.getElementById('discover-products');
-                  element?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="px-8 py-3 bg-secondary text-white font-semibold rounded shadow-[0_4px_14px_0_rgba(216,27,31,0.39)] hover:bg-secondary-dark hover:shadow-[0_6px_20px_rgba(216,27,31,0.23)] hover:-translate-y-1 transition-all duration-300 text-center text-sm"
-              >
-                Explore Medicines
-              </button>
-              <Link 
-                to="/about-us" 
-                className="px-8 py-3 bg-white text-primary font-semibold rounded border-2 border-primary hover:bg-primary hover:text-white transition-all duration-300 text-center text-sm"
-              >
-                Learn More
-              </Link>
+      {/* Main Hero Section with Slider */}
+      <section className="relative h-[400px] md:h-[500px] w-full overflow-hidden">
+        {/* Slides */}
+        {slides.map((slide, index) => (
+          <div
+            key={slide.id}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              index === currentSlide ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            {/* Background Image */}
+            <div
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: `url('${slide.image}')` }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/60 to-white/20"></div>
+            </div>
+
+            {/* Content */}
+            <div className="relative z-10 container mx-auto px-4 md:px-6 lg:px-12 h-[400px] md:h-[500px] flex flex-col justify-center">
+              <div className="max-w-xl">
+                <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold leading-tight mb-3 md:mb-4 text-gray-900">
+                  {slide.title} <br />
+                  <span className="text-primary">{slide.highlight}</span>
+                </h1>
+                <p className="text-xs md:text-base text-gray-600 mb-4 md:mb-6 font-normal leading-relaxed max-w-md">
+                  {slide.description}
+                </p>
+                <div className="flex flex-row gap-2">
+                  <button
+                    onClick={() => {
+                      const element = document.getElementById('discover-products');
+                      element?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="px-4 md:px-6 py-2 bg-secondary text-white font-semibold rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 text-xs md:text-sm"
+                  >
+                    Explore Medicines
+                  </button>
+                  <Link
+                    to="/about-us"
+                    className="px-4 md:px-6 py-2 bg-white text-primary font-semibold rounded-lg border-2 border-primary hover:bg-primary hover:text-white transition-all duration-300 text-xs md:text-sm shadow-md"
+                  >
+                    Learn More
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
+        ))}
+
+        {/* Navigation Arrows */}
+        <button
+          onClick={prevSlide}
+          className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white p-2 md:p-3 rounded-full shadow-lg transition-all hover:scale-110"
+        >
+          <ChevronLeft className="w-4 h-4 md:w-6 md:h-6 text-gray-800" />
+        </button>
+        <button
+          onClick={nextSlide}
+          className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white p-2 md:p-3 rounded-full shadow-lg transition-all hover:scale-110"
+        >
+          <ChevronRight className="w-4 h-4 md:w-6 md:h-6 text-gray-800" />
+        </button>
+
+        {/* Dots Indicator */}
+        <div className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`w-2 h-2 rounded-full transition-all ${
+                index === currentSlide ? 'bg-primary w-6 md:w-8' : 'bg-white/50 hover:bg-white/80'
+              }`}
+            />
+          ))}
         </div>
-  
-        {/* Scroll Indicator (Hidden now to avoid clutter with the new bar) 
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-gray-400">
-           <div className="w-8 h-12 border-2 border-gray-400 rounded-full flex justify-center p-2">
-              <div className="w-1 h-3 bg-gray-400 rounded-full animate-scroll"></div>
-           </div>
-        </div>
-        */}
       </section>
-
-      {/* Overlapping Info Bar */}
-      <div className="w-full absolute bottom-[-50px] left-0 z-30 px-6 hidden md:block">
-         <div className="container mx-auto">
-            <div className="bg-[#EA580C] text-white py-8 px-12 shadow-2xl flex justify-between items-center rounded-sm max-w-5xl mx-auto transform hover:-translate-y-1 transition-transform duration-300">
-                {/* Item 1: Vitamins */}
-                <div className="flex items-center gap-4 group cursor-pointer">
-                    <FlaskConical className="w-8 h-8 stroke-[1.5] group-hover:scale-110 transition-transform duration-300" />
-                    <span className="text-lg font-semibold tracking-wide">Vitamins</span>
-                </div>
-                
-                {/* Divider (Optional, using gaps instead) */}
-
-                {/* Item 2: Collagen */}
-                <div className="flex items-center gap-4 group cursor-pointer">
-                    <Sparkles className="w-8 h-8 stroke-[1.5] group-hover:scale-110 transition-transform duration-300" />
-                    <span className="text-lg font-semibold tracking-wide">Collagen</span>
-                </div>
-
-                {/* Item 3: Protein */}
-                <div className="flex items-center gap-4 group cursor-pointer">
-                   {/* Milk icon isn't perfectly reliable in all lucide versions, using generic or specific fallback */}
-                    <div className="relative w-8 h-8 border-2 border-white rounded-md flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <span className="font-semibold text-xs">99%</span>
-                    </div>
-                    <span className="text-lg font-semibold tracking-wide">Protein</span>
-                </div>
-
-                {/* Item 4: Essential Oils */}
-                <div className="flex items-center gap-4 group cursor-pointer">
-                    <Droplet className="w-8 h-8 stroke-[1.5] filled group-hover:scale-110 transition-transform duration-300" />
-                    <span className="text-lg font-semibold tracking-wide">Essential Oils</span>
-                </div>
-            </div>
-         </div>
-      </div>
-      
-      {/* Mobile Version of the bar (Stacked) */}
-      <div className="w-full bg-[#EA580C] text-white py-8 px-6 md:hidden">
-            <div className="grid grid-cols-2 gap-8 container mx-auto">
-                <div className="flex flex-col items-center gap-2 text-center">
-                    <FlaskConical className="w-8 h-8" />
-                    <span className="text-lg font-bold">Vitamins</span>
-                </div>
-                <div className="flex flex-col items-center gap-2 text-center">
-                    <Sparkles className="w-8 h-8" />
-                    <span className="text-lg font-bold">Collagen</span>
-                </div>
-                <div className="flex flex-col items-center gap-2 text-center">
-                    <div className="w-8 h-8 border-2 border-white rounded flex items-center justify-center">
-                        <span className="text-[10px] font-bold">PRO</span>
-                    </div>
-                    <span className="text-lg font-bold">Protein</span>
-                </div>
-                <div className="flex flex-col items-center gap-2 text-center">
-                    <Droplet className="w-8 h-8" />
-                    <span className="text-lg font-bold">Essential Oils</span>
-                </div>
-            </div>
-      </div>
 
     </div>
   );
