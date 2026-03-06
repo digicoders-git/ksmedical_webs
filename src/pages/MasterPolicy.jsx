@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { FileText, Shield, Lock, RefreshCw, Gift, AlertCircle } from 'lucide-react';
+import HeroSection from '../components/HeroSection';
 
 const MasterPolicy = () => {
     useEffect(() => {
@@ -8,20 +9,10 @@ const MasterPolicy = () => {
 
     return (
         <div className="bg-white font-sans">
-            {/* Hero Section - Full Width Background */}
-            <div className="bg-[rgb(6,51,26)] pt-[120px] lg:pt-[140px] pb-16">
-                <div className="container mx-auto px-6 lg:px-12">
-                    <div className="text-center">
-                        <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6">MASTER POLICY DOCUMENT</h1>
-                        <p className="text-xl md:text-2xl text-white font-semibold mb-6">
-                            Comprehensive. Compliant. Transparent.
-                        </p>
-                        <p className="text-lg text-white/90 max-w-4xl mx-auto leading-relaxed">
-                            KS4 PharmaNet operates with full legal compliance and transparency. This master document outlines all our policies, terms, and commitments to our customers.
-                        </p>
-                    </div>
-                </div>
-            </div>
+            <HeroSection
+                title="Master Policy Document"
+                subtitle="Comprehensive. Compliant. Transparent. KS4 PharmaNet operates with full legal compliance and transparency. This master document outlines all our policies, terms, and commitments to our customers."
+            />
 
             {/* Content Section */}
             <div className="pb-48">

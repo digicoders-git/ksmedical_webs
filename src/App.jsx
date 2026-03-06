@@ -3,9 +3,11 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from "react-route
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 import PageLoader from "./components/PageLoader";
 
 import Home from "./pages/Home";
+import Products from "./pages/Products";
 import CategoryProducts from "./pages/CategoryProducts";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
@@ -40,6 +42,7 @@ const AppContent = () => {
   return (
     <>
       <ScrollToTop />
+      <ScrollToTopButton />
       {/* {loading && <PageLoader />} */}
       <div className="min-h-screen bg-white font-sans flex flex-col">
         <Header />
@@ -47,6 +50,7 @@ const AppContent = () => {
         <div className="flex-grow pt-20">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/products" element={<Products />} />
             <Route
               path="/category/:categoryId"
               element={<CategoryProducts />}

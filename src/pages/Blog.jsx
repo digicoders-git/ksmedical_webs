@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { Search, Calendar, User, ArrowRight, ChevronRight } from 'lucide-react';
+import { Calendar, User, ArrowRight } from 'lucide-react';
+import HeroSection from '../components/HeroSection';
 
 const Blog = () => {
     useEffect(() => {
@@ -35,104 +36,87 @@ const Blog = () => {
 
     return (
         <div className="bg-white font-sans">
-            {/* Hero Section - Full Width Background */}
-            <div className="bg-[rgb(6,51,26)] pt-[120px] lg:pt-[140px] pb-16">
-                <div className="container mx-auto px-6 lg:px-20 max-w-7xl">
-                    <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
-                        <div className="max-w-2xl">
-                            <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-6 tracking-tight">
-                                PharmaNet <span className="text-secondary">Journal</span>
-                            </h1>
-                            <p className="text-white/90 text-lg font-semibold leading-relaxed">
-                                Stay updated with the latest in healthcare, wellness tips, and medical innovations from our team of experts.
-                            </p>
-                        </div>
-                        
-                        {/* Search Bar */}
-                        <div className="relative w-full lg:w-96">
-                            <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
-                            <input 
-                                type="text" 
-                                placeholder="Search articles..." 
-                                className="w-full bg-white border-2 border-white/20 text-gray-900 placeholder:text-gray-500 py-5 pl-16 pr-8 rounded-2xl focus:outline-none focus:border-white transition-all text-sm shadow-lg"
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <HeroSection
+                title="PharmaNet Journal"
+                subtitle="Stay updated with the latest in healthcare, wellness tips, and medical innovations from our team of experts."
+            />
 
             {/* Content Section */}
-            <div className="container mx-auto px-6 lg:px-20 max-w-7xl py-20 pb-48">
+            <div className="py-16 lg:py-24 pb-32 bg-gradient-to-b from-white via-gray-50 to-white">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-6xl">
 
-                {/* Blog Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-                    {/* Main Feed */}
-                    <div className="lg:col-span-8 space-y-16">
+                    {/* Blog Grid */}
+                    <div className="space-y-16 lg:space-y-20">
                         {blogs.map((blog, idx) => (
                             <article key={idx} className="group cursor-pointer">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-                                    <div className="relative overflow-hidden rounded-[40px] aspect-[4/3] shadow-2xl shadow-primary/10">
-                                        <img src={blog.image} alt={blog.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                                        <div className="absolute top-6 left-6 bg-secondary text-[#06331A] px-4 py-2 rounded-xl text-[10px] font-bold uppercase tracking-widest">
-                                            {blog.category}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
+                                    {/* Content */}
+                                    <div className={`space-y-5 ${idx % 2 === 1 ? 'md:order-2' : 'md:order-1'}`}>
+                                        {/* Meta Info */}
+                                        <div className="flex items-center gap-6 text-xs font-semibold text-gray-500 uppercase tracking-wide">
+                                            <span className="flex items-center gap-2">
+                                                <Calendar className="w-4 h-4" /> {blog.date}
+                                            </span>
+                                            <span className="flex items-center gap-2">
+                                                <User className="w-4 h-4" /> {blog.author}
+                                            </span>
                                         </div>
-                                    </div>
-                                    <div className="space-y-4">
-                                        <div className="flex items-center gap-6 text-[10px] font-bold text-gray-400 uppercase tracking-widest">
-                                            <span className="flex items-center gap-2"><Calendar className="w-4 h-4" /> {blog.date}</span>
-                                            <span className="flex items-center gap-2"><User className="w-4 h-4" /> {blog.author}</span>
+
+                                        {/* Category Badge */}
+                                        <div className="inline-block">
+                                            <span className="bg-[#EA580C]/10 text-[#EA580C] px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wide">
+                                                {blog.category}
+                                            </span>
                                         </div>
-                                        <h2 className="text-3xl font-extrabold text-[#06331A] leading-tight group-hover:text-primary transition-colors">
+
+                                        {/* Title */}
+                                        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#06331A] leading-tight group-hover:text-[#EA580C] transition-colors duration-300">
                                             {blog.title}
                                         </h2>
-                                        <p className="text-gray-400 font-light leading-relaxed">
+
+                                        {/* Excerpt */}
+                                        <p className="text-base sm:text-lg text-gray-600 leading-relaxed font-medium">
                                             {blog.excerpt}
                                         </p>
-                                        <button className="flex items-center gap-3 text-primary font-extrabold text-sm group-hover:gap-5 transition-all">
-                                            Read More <ArrowRight className="w-4 h-4" />
+
+                                        {/* Read More Button */}
+                                        <button className="inline-flex items-center gap-3 text-[#EA580C] font-bold text-base hover:gap-5 transition-all group/btn">
+                                            Read More
+                                            <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
                                         </button>
+                                    </div>
+
+                                    {/* Image */}
+                                    <div className={`relative overflow-hidden rounded-3xl aspect-[4/3] shadow-lg hover:shadow-2xl transition-all duration-500 ${idx % 2 === 1 ? 'md:order-1' : 'md:order-2'}`}>
+                                        <img
+                                            src={blog.image}
+                                            alt={blog.title}
+                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                        />
                                     </div>
                                 </div>
                             </article>
                         ))}
                     </div>
 
-                    {/* Sidebar */}
-                    <div className="lg:col-span-4 space-y-12">
-                        {/* Newsletter card */}
-                        <div className="bg-[#06331A] rounded-[40px] p-10 text-white relative overflow-hidden">
-                            <div className="relative z-10 text-center">
-                                <h3 className="text-2xl font-bold mb-4">Stay Healthy</h3>
-                                <p className="text-white/60 text-sm font-light mb-8">Get weekly wellness tips delivered straight to your inbox.</p>
-                                <input 
-                                    type="email" 
-                                    placeholder="your@email.com" 
-                                    className="w-full bg-white/10 border border-white/20 rounded-xl py-4 px-6 mb-4 outline-none focus:bg-white/20 transition-all text-sm"
+                    {/* CTA Section */}
+                    <div className="mt-20 lg:mt-28 bg-gradient-to-r from-[#EA580C]/10 to-[#EA580C]/5 rounded-3xl p-8 sm:p-12 lg:p-16 border-2 border-[#EA580C]/20">
+                        <div className="text-center max-w-2xl mx-auto">
+                            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#06331A] mb-4">Subscribe to Our Newsletter</h3>
+                            <p className="text-base sm:text-lg text-gray-600 font-medium mb-8">Get weekly wellness tips and health insights delivered to your inbox.</p>
+                            <div className="flex flex-col sm:flex-row gap-3">
+                                <input
+                                    type="email"
+                                    placeholder="your@email.com"
+                                    className="flex-1 px-6 py-4 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-[#EA580C] transition-colors text-base"
                                 />
-                                <button className="w-full bg-secondary text-[#06331A] font-bold py-4 rounded-xl hover:scale-105 transition-all">
-                                    Subscribe Now
+                                <button className="bg-[#EA580C] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#EA580C]/90 transition-all shadow-lg hover:shadow-xl whitespace-nowrap text-base">
+                                    Subscribe
                                 </button>
                             </div>
                         </div>
-
-                        {/* Recent Topics */}
-                        <div className="bg-white rounded-[40px] p-10 shadow-xl shadow-gray-100 border border-gray-100">
-                            <h3 className="text-xl font-bold text-[#06331A] mb-8">Popular Topics</h3>
-                            <div className="space-y-6">
-                                {[
-                                    { title: "Managing Blood Pressure", views: "1.2k" },
-                                    { title: "Vitamin D Deficiency", views: "940" },
-                                    { title: "Best Yoga Poses", views: "820" },
-                                    { title: "PharmaNet App Updates", views: "750" }
-                                ].map((topic, i) => (
-                                    <div key={i} className="flex justify-between items-center group cursor-pointer border-b border-gray-50 pb-4 last:border-0 last:pb-0">
-                                        <span className="font-bold text-gray-600 group-hover:text-primary transition-colors text-sm">{topic.title}</span>
-                                        <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-primary transition-all" />
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
                     </div>
+
                 </div>
             </div>
         </div>

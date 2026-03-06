@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Shield, Lock, Database, UserCheck, Eye, Cookie } from 'lucide-react';
+import HeroSection from '../components/HeroSection';
 
 const PrivacyPolicy = () => {
     useEffect(() => {
@@ -8,20 +9,10 @@ const PrivacyPolicy = () => {
 
     return (
         <div className="bg-white font-sans">
-            {/* Hero Section - Full Width Background */}
-            <div className="bg-[rgb(6,51,26)] pt-[120px] lg:pt-[140px] pb-16">
-                <div className="container mx-auto px-6 lg:px-12">
-                    <div className="text-center">
-                        <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6">PRIVACY POLICY</h1>
-                        <p className="text-xl md:text-2xl text-white font-semibold mb-6">
-                            Secure. Confidential. Compliant.
-                        </p>
-                        <p className="text-lg text-white/90 max-w-4xl mx-auto leading-relaxed">
-                            KS4 PharmaNet is committed to protecting the privacy and confidentiality of our users' personal information. This policy explains how we collect, use, store, and protect your data.
-                        </p>
-                    </div>
-                </div>
-            </div>
+            <HeroSection
+                title="Privacy Policy"
+                subtitle="Secure. Confidential. Compliant. KS4 PharmaNet is committed to protecting the privacy and confidentiality of our users' personal information. This policy explains how we collect, use, store, and protect your data."
+            />
 
             {/* Content Section */}
             <div className="pb-48">

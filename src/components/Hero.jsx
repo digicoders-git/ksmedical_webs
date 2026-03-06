@@ -22,12 +22,12 @@ const Hero = () => {
         {/* Hero Content - Added PT to clear fixed header and increased height */}
         <div className="relative z-10 container mx-auto px-6 lg:px-12 min-h-[700px] lg:min-h-[900px] flex flex-col justify-center pt-[120px] lg:pt-[180px] pb-32"> 
           <div className="max-w-2xl animate-fade-in-up">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 tracking-tight text-gray-900">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 tracking-tight text-gray-900">
               Health and wellness <br/>
               <span className="text-primary">accessible to all</span>
             </h1>
             
-            <p className="text-lg md:text-xl text-gray-900 mb-10 font-bold tracking-wide max-w-lg">
+            <p className="text-base md:text-lg text-gray-700 mb-10 font-medium tracking-wide max-w-lg">
               Celebrate your health with our premium pharmaceutical products and dedicated care.
             </p>
             
@@ -37,13 +37,13 @@ const Hero = () => {
                   const element = document.getElementById('discover-products');
                   element?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="px-8 py-4 bg-secondary text-white font-bold rounded shadow-[0_4px_14px_0_rgba(216,27,31,0.39)] hover:bg-secondary-dark hover:shadow-[0_6px_20px_rgba(216,27,31,0.23)] hover:-translate-y-1 transition-all duration-300 text-center"
+                className="px-8 py-3 bg-secondary text-white font-semibold rounded shadow-[0_4px_14px_0_rgba(216,27,31,0.39)] hover:bg-secondary-dark hover:shadow-[0_6px_20px_rgba(216,27,31,0.23)] hover:-translate-y-1 transition-all duration-300 text-center text-sm"
               >
                 Explore Medicines
               </button>
               <Link 
                 to="/about-us" 
-                className="px-8 py-4 bg-white text-primary font-bold rounded border-2 border-primary hover:bg-primary hover:text-white transition-all duration-300 text-center"
+                className="px-8 py-3 bg-white text-primary font-semibold rounded border-2 border-primary hover:bg-primary hover:text-white transition-all duration-300 text-center text-sm"
               >
                 Learn More
               </Link>
@@ -66,31 +66,31 @@ const Hero = () => {
             <div className="bg-[#EA580C] text-white py-8 px-12 shadow-2xl flex justify-between items-center rounded-sm max-w-5xl mx-auto transform hover:-translate-y-1 transition-transform duration-300">
                 {/* Item 1: Vitamins */}
                 <div className="flex items-center gap-4 group cursor-pointer">
-                    <FlaskConical className="w-10 h-10 stroke-[1.5] group-hover:scale-110 transition-transform duration-300" />
-                    <span className="text-xl font-bold tracking-wide">Vitamins</span>
+                    <FlaskConical className="w-8 h-8 stroke-[1.5] group-hover:scale-110 transition-transform duration-300" />
+                    <span className="text-lg font-semibold tracking-wide">Vitamins</span>
                 </div>
                 
                 {/* Divider (Optional, using gaps instead) */}
 
                 {/* Item 2: Collagen */}
                 <div className="flex items-center gap-4 group cursor-pointer">
-                    <Sparkles className="w-10 h-10 stroke-[1.5] group-hover:scale-110 transition-transform duration-300" />
-                    <span className="text-xl font-bold tracking-wide">Collagen</span>
+                    <Sparkles className="w-8 h-8 stroke-[1.5] group-hover:scale-110 transition-transform duration-300" />
+                    <span className="text-lg font-semibold tracking-wide">Collagen</span>
                 </div>
 
                 {/* Item 3: Protein */}
                 <div className="flex items-center gap-4 group cursor-pointer">
                    {/* Milk icon isn't perfectly reliable in all lucide versions, using generic or specific fallback */}
-                    <div className="relative w-10 h-10 border-2 border-white rounded-md flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <span className="font-bold text-xs">99%</span>
+                    <div className="relative w-8 h-8 border-2 border-white rounded-md flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <span className="font-semibold text-xs">99%</span>
                     </div>
-                    <span className="text-xl font-bold tracking-wide">Protein</span>
+                    <span className="text-lg font-semibold tracking-wide">Protein</span>
                 </div>
 
                 {/* Item 4: Essential Oils */}
                 <div className="flex items-center gap-4 group cursor-pointer">
-                    <Droplet className="w-10 h-10 stroke-[1.5] filled group-hover:scale-110 transition-transform duration-300" />
-                    <span className="text-xl font-bold tracking-wide">Essential Oils</span>
+                    <Droplet className="w-8 h-8 stroke-[1.5] filled group-hover:scale-110 transition-transform duration-300" />
+                    <span className="text-lg font-semibold tracking-wide">Essential Oils</span>
                 </div>
             </div>
          </div>

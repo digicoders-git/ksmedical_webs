@@ -8,10 +8,10 @@ const FeaturedSection = () => {
                 
                 {/* Header Section */}
                 <div className="text-center mb-16 md:mb-20">
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
                         Discover Our Products
                     </h2>
-                    <p className="text-gray-500 text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed">
+                    <p className="text-gray-600 text-base md:text-lg font-normal max-w-2xl mx-auto leading-relaxed">
                         We put intention into every product we make <br className="hidden md:block"/>
                         with the balance of science and nature.
                     </p>
@@ -34,7 +34,7 @@ const FeaturedSection = () => {
                     {/* Center Column: Button + Image 2 (Dropped Lower) */}
                     <div className="flex flex-col items-center relative">
                          {/* Button floats above the image */}
-                         <Link to="/contact-us" className="mb-12 px-10 py-4 bg-white border-2 border-secondary text-secondary font-bold text-lg rounded-[20px] hover:bg-secondary hover:text-white transition-all duration-300 uppercase tracking-widest shadow-[0_10px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_15px_30px_rgba(216,27,31,0.2)] transform hover:-translate-y-1">
+                         <Link to="/contact-us" className="mb-12 px-10 py-3 bg-white border-2 border-secondary text-secondary font-semibold text-base rounded-[20px] hover:bg-secondary hover:text-white transition-all duration-300 uppercase tracking-widest shadow-[0_10px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_15px_30px_rgba(216,27,31,0.2)] transform hover:-translate-y-1">
                             Discover More
                         </Link>
 

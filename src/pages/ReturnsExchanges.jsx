@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { FileText, XCircle, RefreshCw, Shield } from 'lucide-react';
+import HeroSection from '../components/HeroSection';
 
 const ReturnsExchanges = () => {
     useEffect(() => {
@@ -8,20 +9,10 @@ const ReturnsExchanges = () => {
 
     return (
         <div className="bg-white font-sans">
-            {/* Hero Section - Full Width Background */}
-            <div className="bg-[rgb(6,51,26)] pt-[120px] lg:pt-[140px] pb-16">
-                <div className="container mx-auto px-6 lg:px-12">
-                    <div className="text-center">
-                        <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6">CANCELLATION POLICY</h1>
-                        <p className="text-xl md:text-2xl text-white font-semibold mb-6">
-                            Transparent. Fair. Customer-Centric.
-                        </p>
-                        <p className="text-lg text-white/90 max-w-4xl mx-auto leading-relaxed">
-                            At KS4 PharmaNet, we believe in clear and customer-friendly cancellation terms. This policy ensures you have complete control over your orders with hassle-free refund processing.
-                        </p>
-                    </div>
-                </div>
-            </div>
+            <HeroSection
+                title="Cancellation Policy"
+                subtitle="Transparent. Fair. Customer-Centric. At KS4 PharmaNet, we believe in clear and customer-friendly cancellation terms. This policy ensures you have complete control over your orders with hassle-free refund processing."
+            />
 
             {/* Content Section */}
             <div className="pb-48">

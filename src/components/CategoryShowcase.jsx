@@ -11,8 +11,8 @@ const CategoryShowcase = () => {
           {/* Top Large Card: Supplements */}
           <div className="bg-white rounded-md overflow-hidden shadow-sm flex flex-col md:flex-row min-h-[450px]">
             <div className="flex-1 p-6 md:p-10 lg:p-16 flex flex-col justify-center items-start">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-8 font-sans tracking-tight">Supplements</h2>
-              <p className="text-gray-500 text-base md:text-lg leading-relaxed max-w-md font-light">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 md:mb-8 font-sans tracking-tight">Supplements</h2>
+              <p className="text-gray-600 text-sm md:text-base leading-relaxed max-w-md font-normal">
                 We use our knowledge and expertise to help you live your best life. This means creating natural health & wellness products that help people make their life better
               </p>
             </div>
@@ -31,7 +31,7 @@ const CategoryShowcase = () => {
             {/* Essential Oils Card */}
             <div className="bg-white rounded-md overflow-hidden shadow-sm flex flex-col md:flex-row h-auto md:h-[320px]">
               <div className="w-full md:w-1/2 p-6 md:p-8 lg:p-10 flex flex-col justify-center items-start">
-                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 font-sans tracking-tight">Essential<br/>Oils</h3>
+                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 font-sans tracking-tight">Essential<br/>Oils</h3>
               </div>
               <div className="w-full md:w-1/2 relative min-h-[200px] md:h-full overflow-hidden">
                 <img 
@@ -45,7 +45,7 @@ const CategoryShowcase = () => {
             {/* Powders Card */}
             <div className="bg-white rounded-md overflow-hidden shadow-sm flex flex-col md:flex-row h-auto md:h-[320px]">
               <div className="w-full md:w-1/2 p-6 md:p-8 lg:p-10 flex flex-col justify-center items-start">
-                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 font-sans tracking-tight">Powders</h3>
+                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 font-sans tracking-tight">Powders</h3>
               </div>
               <div className="w-full md:w-1/2 relative min-h-[200px] md:h-full overflow-hidden">
                 <img 
