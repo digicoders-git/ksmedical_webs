@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { ShoppingCart, Pill } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
+import { ShoppingCart, Pill, Search } from 'lucide-react';
 
 const Products = () => {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const initialSearch = queryParams.get('search') || '';
+
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    setIsVisible(true);
-    fetchProducts();
-  }, []);
+  const [searchTerm, setSearchTerm] = useState(initialSearch);
 
   const fetchProducts = async () => {
     try {
@@ -23,6 +23,24 @@ const Products = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    const query = new URLSearchParams(location.search).get('search') || '';
+    setSearchTerm(query);
+  }, [location.search]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    // Use a small delay for animation trigger to avoid cascading render lint warning
+    const timer = setTimeout(() => setIsVisible(true), 10);
+    fetchProducts();
+    return () => clearTimeout(timer);
+  }, []);
+
+  const filteredProducts = products.filter(product => 
+    product.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+    (product.genericName && product.genericName.toLowerCase().includes(searchTerm.toLowerCase()))
+  );
 
   return (
     <div className="bg-white font-sans">
@@ -109,10 +127,26 @@ const Products = () => {
         <div className="w-full">
           
           {/* Our Products Header */}
-          <div className="text-left mb-12 pl-4 md:pl-20">
-            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-3 border-b-4 border-primary inline-block pb-2">
+          <div className="flex flex-col md:flex-row md:items-center justify-between mb-12 px-4 md:px-20 gap-6">
+            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 border-b-4 border-primary inline-block pb-2">
               Our Products
             </h2>
+
+            {/* Search Bar */}
+            <div className="w-full md:w-96">
+              <div className="relative group">
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                  <Search className="h-5 w-5 text-gray-400 group-focus-within:text-orange-500 transition-colors" />
+                </div>
+                <input
+                  type="text"
+                  className="block w-full pl-11 pr-4 py-3 border-2 border-gray-100 rounded-2xl leading-5 bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300 shadow-sm"
+                  placeholder="Search products..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+              </div>
+            </div>
           </div>
 
           <div className="px-4 sm:px-6 lg:px-12">
@@ -126,107 +160,106 @@ const Products = () => {
               <>
                 {/* Products Grid */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
-
-                  {products.map((product, index) => (
-
-                    <div
-                      key={product._id}
-                      className={`group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col ${isVisible ? 'animate-scale-in' : 'opacity-0'}`}
-                      style={{ animationDelay: `${index * 0.05}s` }}
-                    >
-
-                      {/* Image */}
-                      <div className="relative h-36 bg-gray-50 flex items-center justify-center overflow-hidden">
-
-                        {product.image ? (
-                          <img
-                            src={product.image}
-                            alt={product.name}
-                            className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                          />
-                        ) : (
-                          <Pill className="w-14 h-14 text-gray-300" />
-                        )}
-
-                        {/* Discount */}
-                        {product.discountPercent > 0 && (
-                          <div className="absolute top-2 right-2 bg-orange-500 text-white text-[10px] font-semibold px-2 py-1 rounded-full">
-                            {product.discountPercent}% OFF
-                          </div>
-                        )}
-
-                        {/* Prescription */}
-                        {product.isPrescriptionRequired && (
-                          <div className="absolute top-2 left-2 bg-red-500 text-white text-[10px] font-semibold px-2 py-1 rounded-full">
-                            Rx
-                          </div>
-                        )}
-
-                      </div>
-
-                      {/* Content */}
-                      <div className="p-3 flex flex-col flex-grow">
-
-                        <h3 className="text-sm font-semibold text-gray-800 line-clamp-2">
-                          {product.name}
-                        </h3>
-
-                        {product.genericName && (
-                          <p className="text-xs text-gray-500 mt-1">
-                            {product.genericName}
-                          </p>
-                        )}
-
-                        {/* Price */}
-                        <div className="mt-2 flex items-center gap-2">
-
-                          <span className="text-lg font-bold text-orange-600">
-                            ₹{product.sellingPrice}
-                          </span>
-
-                          {product.mrp && (
-                            <span className="text-xs text-gray-400 line-through">
-                              ₹{product.mrp}
-                            </span>
+                  {filteredProducts.length > 0 ? (
+                    filteredProducts.map((product, index) => (
+                      <div
+                        key={product._id}
+                        className={`group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col ${isVisible ? 'animate-scale-in' : 'opacity-0'}`}
+                        style={{ animationDelay: `${index * 0.05}s` }}
+                      >
+                        {/* Image */}
+                        <div className="relative h-36 bg-gray-50 flex items-center justify-center overflow-hidden">
+                          {product.image ? (
+                            <img
+                              src={product.image}
+                              alt={product.name}
+                              className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                            />
+                          ) : (
+                            <Pill className="w-14 h-14 text-gray-300" />
                           )}
 
+                          {/* Discount */}
+                          {product.discountPercent > 0 && (
+                            <div className="absolute top-2 right-2 bg-orange-500 text-white text-[10px] font-semibold px-2 py-1 rounded-full">
+                              {product.discountPercent}% OFF
+                            </div>
+                          )}
+
+                          {/* Prescription */}
+                          {product.isPrescriptionRequired && (
+                            <div className="absolute top-2 left-2 bg-red-500 text-white text-[10px] font-semibold px-2 py-1 rounded-full">
+                              Rx
+                            </div>
+                          )}
                         </div>
 
-                        {/* Stock */}
-                        <div className="mt-2">
+                        {/* Content */}
+                        <div className="p-3 flex flex-col flex-grow">
+                          <h3 className="text-sm font-semibold text-gray-800 line-clamp-2">
+                            {product.name}
+                          </h3>
 
-                          <span className={`text-[10px] font-medium px-2 py-1 rounded-full
-${product.stock > 0
-                              ? "bg-green-100 text-green-700"
-                              : "bg-red-100 text-red-600"}`}>
+                          {product.genericName && (
+                            <p className="text-xs text-gray-500 mt-1">
+                              {product.genericName}
+                            </p>
+                          )}
 
-                            {product.stock > 0
-                              ? `${product.stock} in stock`
-                              : "Out of stock"}
+                          {/* Price */}
+                          <div className="mt-2 flex items-center gap-2">
+                            <span className="text-lg font-bold text-orange-600">
+                              ₹{product.sellingPrice}
+                            </span>
+                            {product.mrp && (
+                              <span className="text-xs text-gray-400 line-through">
+                                ₹{product.mrp}
+                              </span>
+                            )}
+                          </div>
 
-                          </span>
+                          {/* Stock */}
+                          <div className="mt-2">
+                            <span className={`text-[10px] font-medium px-2 py-1 rounded-full
+                              ${product.stock > 0
+                                ? "bg-green-100 text-green-700"
+                                : "bg-red-100 text-red-600"}`}>
+                              {product.stock > 0
+                                ? `${product.stock} in stock`
+                                : "Out of stock"}
+                            </span>
+                          </div>
 
+                          {/* Button */}
+                          <button className="mt-3 w-full flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold py-2 rounded-lg transition-all duration-200">
+                            <ShoppingCart className="w-4 h-4" />
+                            Buy Now
+                          </button>
                         </div>
-
-                        {/* Button */}
-                        <button className="mt-3 w-full flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold py-2 rounded-lg transition-all duration-200">
-
-                          <ShoppingCart className="w-4 h-4" />
-                          Buy Now
-
-                        </button>
-
                       </div>
-
-                    </div>
-
-                  ))}
-
+                    ))
+                  ) : null}
                 </div>
 
-                {/* Results Count */}
-                <div className="text-center text-gray-600 font-medium py-8">
-                  Showing {products.length} products
+                {/* Results Count & Empty State */}
+                <div className="text-center text-gray-600 font-medium py-12">
+                  {filteredProducts.length > 0 ? (
+                    `Showing ${filteredProducts.length} products`
+                  ) : (
+                    <div className="flex flex-col items-center gap-4">
+                      <div className="bg-gray-100 p-6 rounded-full">
+                        <Search className="w-12 h-12 text-gray-400" />
+                      </div>
+                      <p className="text-xl font-bold text-gray-800">No products found</p>
+                      <p className="text-gray-500">We couldn't find any products matching "{searchTerm}"</p>
+                      <button 
+                        onClick={() => setSearchTerm('')}
+                        className="text-orange-500 font-bold hover:underline"
+                      >
+                        Clear Search
+                      </button>
+                    </div>
+                  )}
                 </div>
               </>
             )}
