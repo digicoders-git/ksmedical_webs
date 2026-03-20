@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FlaskConical, Sparkles, Droplet, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Search } from 'lucide-react';
 
 const slides = [
   {
@@ -61,8 +61,33 @@ const slides = [
   }
 ];
 
-const Hero = () => {
+const Hero = ({ searchTerm = '', onSearch }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [products, setProducts] = useState([]);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const searchRef = React.useRef(null);
+
+  useEffect(() => {
+    fetch('https://ksmedial-enventory-backend.onrender.com/api/admin/products?scope=inventory')
+      .then(r => r.json())
+      .then(d => setProducts(d.products || []))
+      .catch(() => {});
+  }, []);
+
+  useEffect(() => {
+    const handler = (e) => {
+      if (searchRef.current && !searchRef.current.contains(e.target)) setShowDropdown(false);
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
+
+  const filtered = searchTerm.trim()
+    ? products.filter(p =>
+        p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (p.genericName && p.genericName.toLowerCase().includes(searchTerm.toLowerCase()))
+      ).slice(0, 8)
+    : [];
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -78,7 +103,9 @@ const Hero = () => {
     <div className="relative">
       
       {/* Main Hero Section with Slider */}
-      <section className="relative h-[400px] md:h-[500px] w-full overflow-hidden">
+      <section className="relative h-[460px] md:h-[560px] w-full">
+        {/* Slides wrapper - clipped separately so dropdown can overflow */}
+        <div className="absolute inset-0 overflow-hidden">
         {/* Slides */}
         {slides.map((slide, index) => (
           <div
@@ -96,7 +123,7 @@ const Hero = () => {
             </div>
 
             {/* Content */}
-            <div className="relative z-10 container mx-auto px-4 md:px-6 lg:px-12 h-[400px] md:h-[500px] flex flex-col justify-center">
+            <div className="relative z-10 container mx-auto px-4 md:px-6 lg:px-12 h-[460px] md:h-[560px] flex flex-col justify-center">
               <div className="max-w-xl">
                 <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold leading-tight mb-3 md:mb-4 text-gray-900">
                   {slide.title} <br />
@@ -126,6 +153,7 @@ const Hero = () => {
             </div>
           </div>
         ))}
+        </div>
 
         {/* Navigation Arrows */}
         <button
@@ -141,8 +169,72 @@ const Hero = () => {
           <ChevronRight className="w-4 h-4 md:w-6 md:h-6 text-gray-800" />
         </button>
 
+        {/* Search Bar Overlay */}
+        <div ref={searchRef} className="absolute top-6 md:top-8 left-1/2 -translate-x-1/2 z-30 w-[90%] max-w-xl px-2">
+          <div className="relative group">
+            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <Search className="h-5 w-5 text-gray-400 group-focus-within:text-orange-500 transition-colors" />
+            </div>
+            <input
+              type="text"
+              className="block w-full pl-11 pr-4 py-3 md:py-4 border-2 border-white/80 rounded-2xl bg-white/90 backdrop-blur-sm placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300 shadow-lg text-base md:text-lg"
+              placeholder="Search medicines & health products..."
+              value={searchTerm}
+              onFocus={() => searchTerm.trim() && setShowDropdown(true)}
+              onChange={(e) => {
+                onSearch?.(e.target.value);
+                setShowDropdown(!!e.target.value.trim());
+              }}
+            />
+
+            {/* Dropdown */}
+            {showDropdown && (
+              <div className="absolute top-full left-0 right-0 mt-1 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-50 max-h-80 overflow-y-auto">
+                {filtered.length > 0 ? (
+                  <>
+                    {filtered.map((product) => (
+                      <Link
+                        key={product._id}
+                        to="/products"
+                        onClick={() => setShowDropdown(false)}
+                        className="flex items-center gap-3 px-4 py-3 hover:bg-orange-50 transition-colors border-b border-gray-50 last:border-0"
+                      >
+                        {product.image ? (
+                          <img src={product.image} alt={product.name} className="w-10 h-10 rounded-lg object-cover flex-shrink-0" />
+                        ) : (
+                          <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">
+                            <Search className="w-4 h-4 text-gray-300" />
+                          </div>
+                        )}
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-semibold text-gray-800 truncate">{product.name}</p>
+                          {product.genericName && (
+                            <p className="text-xs text-gray-400 truncate">{product.genericName}</p>
+                          )}
+                        </div>
+                        {product.discountPercent > 0 && (
+                          <span className="text-xs bg-orange-100 text-orange-600 font-bold px-2 py-0.5 rounded-full flex-shrink-0">{product.discountPercent}% OFF</span>
+                        )}
+                      </Link>
+                    ))}
+                    <Link
+                      to={`/products?search=${encodeURIComponent(searchTerm)}`}
+                      onClick={() => setShowDropdown(false)}
+                      className="block text-center py-3 text-sm font-bold text-primary hover:bg-primary hover:text-white transition-colors"
+                    >
+                      See all results →
+                    </Link>
+                  </>
+                ) : (
+                  <div className="px-4 py-6 text-center text-sm text-gray-400">No products found</div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+
         {/* Dots Indicator */}
-        <div className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex gap-2">
           {slides.map((_, index) => (
             <button
               key={index}

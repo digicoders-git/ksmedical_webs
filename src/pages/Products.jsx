@@ -11,6 +11,23 @@ const Products = () => {
   const [loading, setLoading] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
   const [searchTerm, setSearchTerm] = useState(initialSearch);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const searchRef = React.useRef(null);
+
+  useEffect(() => {
+    const handler = (e) => {
+      if (searchRef.current && !searchRef.current.contains(e.target)) setShowDropdown(false);
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
+
+  const dropdownResults = searchTerm.trim()
+    ? products.filter(p =>
+        p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (p.genericName && p.genericName.toLowerCase().includes(searchTerm.toLowerCase()))
+      ).slice(0, 8)
+    : [];
 
   const fetchProducts = async () => {
     try {
@@ -75,15 +92,13 @@ const Products = () => {
 
       {/* Hero Section */}
       <div
-        className="relative pt-[120px] lg:pt-[140px] pb-24 overflow-hidden"
+        className="relative pt-[120px] lg:pt-[140px] pb-20 overflow-visible"
         style={{
-          backgroundImage:
-            'url("/istockphoto-1319031310-612x612.webp")',
+          backgroundImage: 'url("/istockphoto-1319031310-612x612.webp")',
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
-
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#06331A]/85 via-[#06331A]/70 to-[#06331A]/85"></div>
 
@@ -92,34 +107,76 @@ const Products = () => {
         <div className="absolute bottom-10 left-20 w-72 h-72 bg-orange-500/20 rounded-full blur-3xl"></div>
 
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
-
           <div className="max-w-3xl mx-auto text-center">
-
             {/* Glass Card */}
             <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-10 shadow-xl">
+              {/* Search Bar at top */}
+              <div ref={searchRef} className="relative mb-6">
+                <div className="relative group">
+                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <Search className="h-5 w-5 text-gray-400 group-focus-within:text-orange-500 transition-colors" />
+                  </div>
+                  <input
+                    type="text"
+                    className="block w-full pl-11 pr-4 py-3 md:py-4 border-2 border-white/80 rounded-2xl bg-white/90 backdrop-blur-sm placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300 shadow-lg text-base md:text-lg"
+                    placeholder="Search medicines & health products..."
+                    value={searchTerm}
+                    onFocus={() => searchTerm.trim() && setShowDropdown(true)}
+                    onChange={(e) => { setSearchTerm(e.target.value); setShowDropdown(!!e.target.value.trim()); }}
+                  />
+                </div>
+                {showDropdown && (
+                  <div className="absolute top-full left-0 right-0 mt-1 bg-white rounded-2xl shadow-2xl border border-gray-100 z-50 max-h-80 overflow-y-auto text-left">
+                    {dropdownResults.length > 0 ? (
+                      <>
+                        {dropdownResults.map((product) => (
+                          <div
+                            key={product._id}
+                            onClick={() => { setSearchTerm(product.name); setShowDropdown(false); }}
+                            className="flex items-center gap-3 px-4 py-3 hover:bg-orange-50 transition-colors border-b border-gray-50 last:border-0 cursor-pointer"
+                          >
+                            {product.image ? (
+                              <img src={product.image} alt={product.name} className="w-10 h-10 rounded-lg object-cover flex-shrink-0" />
+                            ) : (
+                              <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">
+                                <Search className="w-4 h-4 text-gray-300" />
+                              </div>
+                            )}
+                            <div className="flex-1 min-w-0">
+                              <p className="text-sm font-semibold text-gray-800 truncate">{product.name}</p>
+                              {product.genericName && (
+                                <p className="text-xs text-gray-400 truncate">{product.genericName}</p>
+                              )}
+                            </div>
+                            {product.discountPercent > 0 && (
+                              <span className="text-xs bg-orange-100 text-orange-600 font-bold px-2 py-0.5 rounded-full flex-shrink-0">{product.discountPercent}% OFF</span>
+                            )}
+                          </div>
+                        ))}
+                        <div
+                          onClick={() => setShowDropdown(false)}
+                          className="block text-center py-3 text-sm font-bold text-primary hover:bg-primary hover:text-white transition-colors cursor-pointer rounded-b-2xl"
+                        >
+                          See all results →
+                        </div>
+                      </>
+                    ) : (
+                      <div className="px-4 py-6 text-center text-sm text-gray-400">No products found</div>
+                    )}
+                  </div>
+                )}
+              </div>
 
-              <h1
-                className={`text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight ${isVisible ? "animate-fade-in-down" : "opacity-0"
-                  }`}
-              >
+              <h1 className={`text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight ${isVisible ? "animate-fade-in-down" : "opacity-0"}`}>
                 Our Products
               </h1>
-
-              <p
-                className={`text-lg md:text-xl text-white/90 leading-relaxed ${isVisible ? "animate-fade-in-up" : "opacity-0"
-                  }`}
-                style={{ animationDelay: "0.2s" }}
-              >
+              <p className={`text-lg md:text-xl text-white/90 leading-relaxed ${isVisible ? "animate-fade-in-up" : "opacity-0"}`} style={{ animationDelay: "0.2s" }}>
                 Discover high-quality medicines and trusted healthcare products
                 designed to support your health and wellness every day.
               </p>
-
             </div>
-
           </div>
-
         </div>
-
       </div>
 
       {/* Content Section */}
@@ -131,22 +188,6 @@ const Products = () => {
             <h2 className="text-2xl md:text-4xl font-bold text-gray-900 border-b-4 border-primary inline-block pb-2">
               Our Products
             </h2>
-
-            {/* Search Bar */}
-            <div className="w-full md:w-96">
-              <div className="relative group">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <Search className="h-5 w-5 text-gray-400 group-focus-within:text-orange-500 transition-colors" />
-                </div>
-                <input
-                  type="text"
-                  className="block w-full pl-11 pr-4 py-3 border-2 border-gray-100 rounded-2xl leading-5 bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300 shadow-sm"
-                  placeholder="Search products..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-              </div>
-            </div>
           </div>
 
           <div className="px-4 sm:px-6 lg:px-12">
